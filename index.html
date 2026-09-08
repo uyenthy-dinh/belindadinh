@@ -152,6 +152,13 @@
   }
   .product-card .price{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--accent);margin:0;}
   .product-card .price small{font-family:'Manrope',sans-serif;font-size:.68rem;color:var(--ink-soft);font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
+  .product-card .old-price{font-family:'Manrope',sans-serif;font-size:.95rem;font-weight:600;color:var(--ink-soft);text-decoration:line-through;margin-right:8px;}
+  .sale-banner{
+    display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;
+    border-radius:999px;padding:12px 24px;font-weight:700;font-size:.92rem;
+    margin-bottom:36px;text-align:center;
+  }
   .product-card ul{margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;}
   .product-card h3{font-size:1.2rem;}
 
@@ -310,41 +317,43 @@
         <p>Không cần đầu tư lớn — chọn 1 sản phẩm phù hợp với việc bạn đang bí nhất ngay lúc này.</p>
       </div>
 
+      <div class="sale-banner">🔥 Ưu đãi tháng 9 — giảm đến 40%, áp dụng đến hết 30/9</div>
+
       <div class="product-grid">
         <div class="product-card">
           <span class="eyebrow" style="margin:0;">Mini course</span>
           <h3>7 Ngày Dùng AI Làm Content</h3>
-          <p class="price">199.000đ <small>trọn khoá</small></p>
+          <p class="price"><span class="old-price">199.000đ</span>119.000đ <small>trọn khoá</small></p>
           <ul>
             <li>Lộ trình 7 ngày, mỗi ngày 1 bài học 15 phút + bài tập áp dụng ngay</li>
             <li>Đi từ viết caption tới dựng cả lịch nội dung 1 tháng bằng AI</li>
             <li>Kèm bộ prompt riêng cho từng ngày học</li>
           </ul>
-          <button class="btn btn-ghost btn-block buy-btn" data-name="Mini course 7 Ngày Dùng AI Làm Content" data-price="199.000đ">Mua ngay</button>
+          <button class="btn btn-ghost btn-block buy-btn" data-name="Mini course 7 Ngày Dùng AI Làm Content" data-price="119.000đ">Mua ngay</button>
         </div>
 
         <div class="product-card">
           <span class="eyebrow" style="margin:0;">Template</span>
           <h3>Bộ Prompt Template Pro</h3>
-          <p class="price">149.000đ <small>tải về dùng ngay</small></p>
+          <p class="price"><span class="old-price">149.000đ</span>89.000đ <small>tải về dùng ngay</small></p>
           <ul>
             <li>200+ prompt phân loại theo ngành hàng & mục tiêu content</li>
             <li>Định dạng copy-paste, chỉ cần điền chỗ trống theo sản phẩm của bạn</li>
             <li>Cập nhật thêm prompt mới miễn phí trong 6 tháng</li>
           </ul>
-          <button class="btn btn-ghost btn-block buy-btn" data-name="Bộ Prompt Template Pro" data-price="149.000đ">Mua ngay</button>
+          <button class="btn btn-ghost btn-block buy-btn" data-name="Bộ Prompt Template Pro" data-price="89.000đ">Mua ngay</button>
         </div>
 
         <div class="product-card">
           <span class="eyebrow" style="margin:0;">Automation Kit</span>
           <h3>Notion + Canva Automation Kit</h3>
-          <p class="price">249.000đ <small>trọn bộ</small></p>
+          <p class="price"><span class="old-price">249.000đ</span>149.000đ <small>trọn bộ</small></p>
           <ul>
             <li>Template Notion quản lý lịch content tích hợp sẵn prompt AI</li>
             <li>Bộ template Canva dựng ảnh/video nhanh theo đúng bộ nhận diện</li>
             <li>Video hướng dẫn cài đặt 10 phút</li>
           </ul>
-          <button class="btn btn-ghost btn-block buy-btn" data-name="Notion + Canva Automation Kit" data-price="249.000đ">Mua ngay</button>
+          <button class="btn btn-ghost btn-block buy-btn" data-name="Notion + Canva Automation Kit" data-price="149.000đ">Mua ngay</button>
         </div>
       </div>
 
@@ -428,7 +437,7 @@
       </div>
       <div>
         <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
-        <a href="https://zalo.me/0942363481" target="_blank" rel="noopener" style="font-weight:700;">Nhắn Zalo cho Belinda</a>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
       </div>
     </div>
     <div class="footer-bottom">
