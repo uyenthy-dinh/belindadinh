@@ -556,22 +556,33 @@ Belinda Dinh — Content Marketing × AI
 TikTok: @belinda.dinh · Facebook: Belinda Dinh AI & Creative
 `;
 
+  function downloadViaBrowser(filename, text){
+    const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
   document.getElementById('downloadBtn').addEventListener('click', async () => {
-    try{
-      if (!window.claude || typeof window.claude.use !== 'function'){
-        showToast('Tính năng tải file cần mở trong Claude.');
-        return;
+    const filename = 'AI-Content-Starter-Kit-BelindaDinh.txt';
+    if (window.claude && typeof window.claude.use === 'function'){
+      try{
+        const downloads = await window.claude.use('downloads');
+        if (downloads){
+          await downloads.save({ filename, data: STARTER_KIT });
+          showToast('Đã lưu file thành công!');
+          return;
+        }
+      } catch(e){
+        if (e && e.code === 'declined'){ return; }
       }
-      const downloads = await window.claude.use('downloads');
-      if (!downloads){
-        showToast('Tính năng tải file chưa khả dụng ở chế độ xem này.');
-        return;
-      }
-      await downloads.save({ filename: 'AI-Content-Starter-Kit-BelindaDinh.txt', data: STARTER_KIT });
-      showToast('Đã lưu file thành công!');
-    } catch(e){
-      if (e && e.code === 'declined'){ return; }
-      showToast('Chưa tải được file, thử lại nhé.');
     }
+    downloadViaBrowser(filename, STARTER_KIT);
+    showToast('Đã lưu file thành công!');
   });
 </script>
