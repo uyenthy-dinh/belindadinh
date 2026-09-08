@@ -359,8 +359,8 @@
           </div>
           <div>
             <div class="info-row"><span>Nội dung CK</span><b id="payTransferNote">[Sản phẩm] - [Email của bạn]</b></div>
-            <a href="https://zalo.me/0942363481" target="_blank" rel="noopener" class="btn btn-primary btn-block" style="margin-top:16px;">Nhắn Zalo xác nhận đã chuyển khoản</a>
-            <p style="font-size:.8rem;margin-top:10px;">Sau khi xác nhận, bạn sẽ nhận link tải trong vòng 24h qua Zalo hoặc email.</p>
+            <a id="payEmailBtn" href="mailto:belindadinh1421@gmail.com" class="btn btn-primary btn-block" style="margin-top:16px;">✉️ Gửi email xác nhận đã chuyển khoản</a>
+            <p style="font-size:.8rem;margin-top:10px;">Đính kèm ảnh chụp giao dịch trong email — bạn sẽ nhận link tải trong vòng 24h.</p>
           </div>
         </div>
       </div>
@@ -445,6 +445,7 @@
   const payName = document.getElementById('payProductName');
   const payPrice = document.getElementById('payProductPrice');
   const payNote = document.getElementById('payTransferNote');
+  const payEmailBtn = document.getElementById('payEmailBtn');
 
   buyButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -453,6 +454,9 @@
       payName.textContent = name;
       payPrice.textContent = price;
       payNote.textContent = name + ' - [Email của bạn]';
+      const subject = encodeURIComponent('Xác nhận chuyển khoản - ' + name);
+      const body = encodeURIComponent('Mình vừa chuyển khoản mua "' + name + '" (' + price + ').\nĐính kèm ảnh chụp giao dịch trong email này.\n\nEmail nhận link: ');
+      payEmailBtn.href = 'mailto:belindadinh1421@gmail.com?subject=' + subject + '&body=' + body;
       payPanel.classList.add('open');
       payPanel.scrollIntoView({behavior:'smooth', block:'center'});
     });
