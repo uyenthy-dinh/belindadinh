@@ -321,6 +321,5 @@
 @media (max-width:800px){ .case-fields{grid-template-columns:1fr 1fr;} }
 .case-fields .lbl{font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-2);margin-bottom:3px;}
 .case-fields .val{font-size:.85rem;color:var(--ink);}
-.case-shots{display:flex;gap:10px;margin-top:14px;}
-.case-shots img{width:100%;border-radius:10px;border:1px solid var(--line);object-fit:cover;aspect-ratio:16/9;}
-.case-shots.two img{aspect-ratio:4/5;}
+.case-link{display:inline-block;margin-top:14px;font-size:.85rem;font-weight:700;color:var(--accent);text-decoration:none;}
+.case-link:hover{text-decoration:underline;}
