@@ -1,0 +1,242 @@
+<title>AI Workflow Finder — Belinda Dinh</title>
+<meta name="description" content="Trả lời 5 câu hỏi, nhận ngay workflow AI phù hợp với đúng việc bạn đang bí, kèm 1 prompt mẫu dùng thử ngay.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Belinda Dinh</a>
+    <ul class="nav-links">
+      <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+      <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
+      <li><a href="index.html#products">Sản phẩm</a></li>
+      <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="index.html#about">Về mình</a></li>
+    </ul>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
+  </div>
+</header>
+
+<main>
+  <section class="section page-hero" style="padding-bottom:20px;">
+    <div class="container">
+      <div class="crumb"><a href="thu-vien-workflow.html">← Thư viện Workflow</a></div>
+      <p class="eyebrow">Miễn phí · 60 giây</p>
+      <h1>AI Workflow Finder</h1>
+      <p class="lede">Trả lời 5 câu hỏi ngắn — mình gợi ý đúng workflow, bộ công cụ và 1 prompt mẫu để bạn dùng ngay hôm nay.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="quiz-wrap">
+        <div class="quiz-progress" id="quizProgress"></div>
+
+        <div class="quiz-step active" data-step="0">
+          <h2>1. Bạn đang làm công việc gì?</h2>
+          <div class="quiz-options" data-q="role">
+            <button class="quiz-opt" data-v="creator">Content creator / chạy kênh MXH</button>
+            <button class="quiz-opt" data-v="shop">Chủ shop / kinh doanh nhỏ</button>
+            <button class="quiz-opt" data-v="freelance">Freelancer / cung cấp dịch vụ</button>
+            <button class="quiz-opt" data-v="office">Nhân viên văn phòng</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="1">
+          <h2>2. Việc gì đang chiếm nhiều thời gian nhất của bạn?</h2>
+          <div class="quiz-options" data-q="pain">
+            <button class="quiz-opt" data-v="ideas">Nghĩ ý tưởng & viết nội dung</button>
+            <button class="quiz-opt" data-v="schedule">Duy trì lịch đăng đều đặn mỗi tuần</button>
+            <button class="quiz-opt" data-v="docs">Xử lý tài liệu, dữ liệu, kiến thức</button>
+            <button class="quiz-opt" data-v="unclear">Chưa rõ — chỉ thấy tốn thời gian chung chung</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="2">
+          <h2>3. Trình độ dùng AI hiện tại của bạn?</h2>
+          <div class="quiz-options" data-q="level">
+            <button class="quiz-opt" data-v="none">Chưa dùng AI bao giờ</button>
+            <button class="quiz-opt" data-v="basic">Thỉnh thoảng hỏi ChatGPT vài câu</button>
+            <button class="quiz-opt" data-v="daily">Dùng AI hằng ngày cho vài việc cụ thể</button>
+            <button class="quiz-opt" data-v="advanced">Đã biết nối nhiều bước thành workflow</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="3">
+          <h2>4. Bạn đang dùng công cụ AI nào?</h2>
+          <div class="quiz-options" data-q="tool">
+            <button class="quiz-opt" data-v="none">Chưa dùng công cụ nào</button>
+            <button class="quiz-opt" data-v="chatgpt">ChatGPT</button>
+            <button class="quiz-opt" data-v="claude">Claude</button>
+            <button class="quiz-opt" data-v="many">Vài công cụ khác nhau</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="4">
+          <h2>5. Kết quả bạn muốn đạt được?</h2>
+          <div class="quiz-options" data-q="goal">
+            <button class="quiz-opt" data-v="faster">Ra content nhanh hơn</button>
+            <button class="quiz-opt" data-v="save-time">Bớt thời gian làm việc lặp lại</button>
+            <button class="quiz-opt" data-v="build">Biến tài liệu/ý tưởng thành sản phẩm dùng được</button>
+            <button class="quiz-opt" data-v="learn">Hiểu rõ nên bắt đầu từ đâu</button>
+          </div>
+        </div>
+
+        <div class="quiz-step" data-step="5" id="resultStep">
+          <h2>Workflow phù hợp với bạn</h2>
+          <div id="resultContent"></div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn btn-ghost" id="btnBack" style="display:none;">← Quay lại</button>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Theo dõi mình tại</p>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@belinda.dinh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61593634372996" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/belinda.dinh" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@belinda.dinh" target="_blank" rel="noopener">Threads</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Belinda Dinh Creative — Email chỉ dùng để gửi tài liệu, cập nhật sản phẩm và chăm sóc bạn, không chia sẻ cho bên thứ ba.
+    </div>
+  </div>
+</footer>
+
+<script>
+  const answers = {};
+  const steps = document.querySelectorAll('.quiz-step');
+  const progressWrap = document.getElementById('quizProgress');
+  const btnBack = document.getElementById('btnBack');
+  let current = 0;
+  const totalQuestions = 5;
+
+  for (let i = 0; i < totalQuestions; i++) {
+    const span = document.createElement('span');
+    progressWrap.appendChild(span);
+  }
+
+  function updateProgress() {
+    const spans = progressWrap.querySelectorAll('span');
+    spans.forEach((s, i) => s.classList.toggle('done', i <= current || current >= totalQuestions));
+  }
+
+  function showStep(i) {
+    steps.forEach(s => s.classList.toggle('active', Number(s.dataset.step) === i));
+    btnBack.style.display = i > 0 ? 'inline-flex' : 'none';
+    updateProgress();
+  }
+
+  document.querySelectorAll('.quiz-options').forEach(group => {
+    group.querySelectorAll('.quiz-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const q = group.dataset.q;
+        answers[q] = btn.dataset.v;
+        group.querySelectorAll('.quiz-opt').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        setTimeout(() => {
+          if (current < totalQuestions - 1) {
+            current++;
+            showStep(current);
+          } else {
+            current = totalQuestions;
+            renderResult();
+            showStep(current);
+          }
+        }, 200);
+      });
+    });
+  });
+
+  btnBack.addEventListener('click', () => {
+    if (current > 0 && current <= totalQuestions) {
+      current = Math.min(current, totalQuestions - 1) - 1;
+      if (current < 0) current = 0;
+      showStep(current);
+    }
+  });
+
+  const WORKFLOWS = {
+    ideas: {
+      title: '1 ý tưởng → carousel, Reel, email và newsletter',
+      desc: 'Vì bạn đang mất nhiều thời gian nhất cho việc nghĩ ý tưởng & viết nội dung, workflow này giúp bạn viết 1 lần, ra nhiều định dạng cho nhiều kênh.',
+      href: 'workflow-1-y-tuong-thanh-content.html',
+      prompt: 'Đây là bài viết/nội dung gốc của tôi: [dán nội dung]. Hãy giúp tôi biến nó thành: (1) 1 caption Facebook ngắn gọn, (2) 1 caption TikTok kèm hook 3 giây đầu, (3) 3 câu quote ngắn để làm slide Instagram, (4) 1 tiêu đề email newsletter.'
+    },
+    schedule: {
+      title: 'Quy trình sản xuất content 1 tuần bằng AI',
+      desc: 'Vì vấn đề của bạn là duy trì lịch đăng đều đặn, workflow này giúp bạn dựng cả lịch nội dung 1 tuần chỉ trong 30 phút.',
+      href: 'workflow-2-quy-trinh-1-tuan.html',
+      prompt: 'Lên lịch nội dung 4 tuần cho [chủ đề/ngành của tôi], theo tỉ lệ 80% giá trị – 20% bán hàng. Mỗi tuần 5 bài, viết dạng bảng: Tuần - Ngày - Loại nội dung - Chủ đề 1 dòng - Kênh đăng phù hợp.'
+    },
+    docs: {
+      title: 'Biến PDF/tài liệu thành web trắc nghiệm',
+      desc: 'Vì bạn đang mất nhiều thời gian xử lý tài liệu/dữ liệu, workflow này cho thấy cách biến tài liệu thành 1 công cụ dùng được ngay, không cần biết code.',
+      href: 'workflow-3-tai-lieu-thanh-web.html',
+      prompt: 'Đây là tài liệu của tôi: [dán nội dung]. Hãy trích ra 15 câu hỏi trắc nghiệm từ nội dung này, sau đó tạo giúp tôi 1 trang web trắc nghiệm đơn giản để ôn lại.'
+    },
+    starter: {
+      title: 'AI Content Starter Kit — bắt đầu từ nền tảng',
+      desc: 'Vì bạn chưa rõ nên bắt đầu từ đâu, hãy bắt đầu với khung 5 cấp độ dùng AI + 50 prompt sẵn dùng — miễn phí.',
+      href: 'index.html#freebie',
+      prompt: 'Bạn là chuyên gia content cho ngành [ngành của bạn]. Sản phẩm của tôi là [tên + mô tả ngắn]. Hãy viết 1 caption Facebook giới thiệu sản phẩm, giọng văn gần gũi.'
+    }
+  };
+
+  function pickWorkflow() {
+    const painMap = { ideas: 'ideas', schedule: 'schedule', docs: 'docs', unclear: null };
+    const goalMap = { faster: 'ideas', 'save-time': 'schedule', build: 'docs', learn: 'starter' };
+    if (answers.level === 'none' || answers.tool === 'none') return WORKFLOWS.starter;
+    return WORKFLOWS[painMap[answers.pain]] || WORKFLOWS[goalMap[answers.goal]] || WORKFLOWS.ideas;
+  }
+
+  function toolSuggestion() {
+    if (answers.tool === 'none') return 'Bắt đầu với ChatGPT (miễn phí) hoặc Claude (miễn phí) — cả hai đều đủ dùng cho workflow này, không cần trả phí ngay.';
+    if (answers.tool === 'chatgpt') return 'ChatGPT bạn đang dùng là đủ cho workflow này — không cần đổi công cụ.';
+    if (answers.tool === 'claude') return 'Claude bạn đang dùng rất hợp cho workflow này, đặc biệt nếu cần AI viết nội dung dài hoặc tạo trang web.';
+    return 'Bộ công cụ bạn đang dùng đã đủ — chỉ cần áp dụng đúng workflow bên dưới.';
+  }
+
+  function renderResult() {
+    const wf = pickWorkflow();
+    const html = `
+      <div class="quiz-result-block">
+        <h3>🎯 Workflow đề xuất</h3>
+        <p><b>${wf.title}</b></p>
+        <p style="margin-top:6px;">${wf.desc}</p>
+      </div>
+      <div class="quiz-result-block">
+        <h3>🧰 Bộ công cụ phù hợp</h3>
+        <p>${toolSuggestion()}</p>
+      </div>
+      <div class="quiz-result-block">
+        <h3>✍️ Prompt mẫu để dùng ngay</h3>
+        <div class="quiz-result-prompt">"${wf.prompt}"</div>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:24px;">
+        <a href="${wf.href}" class="btn btn-primary">Xem chi tiết workflow này</a>
+        <a href="index.html#products" class="btn btn-ghost">Xem bộ template đầy đủ</a>
+      </div>
+    `;
+    document.getElementById('resultContent').innerHTML = html;
+  }
+
+  showStep(0);
+</script>

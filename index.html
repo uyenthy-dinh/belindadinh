@@ -1,236 +1,19 @@
 <title>Belinda Dinh Creative</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
-<style>
-  :root{
-    --bg:#F6F3F7;
-    --surface:#FFFFFF;
-    --ink:#241B2E;
-    --ink-soft:#5B4F66;
-    --accent:#E94E77;
-    --accent-ink:#FFFFFF;
-    --accent-2:#6C5CE7;
-    --line:#E4DEE8;
-    --shadow: 0 12px 32px -16px rgba(36,27,46,.22);
-    --radius: 18px;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#1B1420;
-      --surface:#241B2E;
-      --ink:#F3EEF7;
-      --ink-soft:#C9BFD1;
-      --accent:#FF6E90;
-      --accent-ink:#1B1420;
-      --accent-2:#9C8CFF;
-      --line:#392C46;
-      --shadow: 0 12px 32px -16px rgba(0,0,0,.5);
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#1B1420;
-    --surface:#241B2E;
-    --ink:#F3EEF7;
-    --ink-soft:#C9BFD1;
-    --accent:#FF6E90;
-    --accent-ink:#1B1420;
-    --accent-2:#9C8CFF;
-    --line:#392C46;
-    --shadow: 0 12px 32px -16px rgba(0,0,0,.5);
-  }
-
-  *{box-sizing:border-box;}
-  body{
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Manrope',system-ui,-apple-system,sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces',Georgia,serif;
-    font-weight:600;
-    line-height:1.12;
-    text-wrap:balance;
-    margin:0 0 .5em;
-    color:var(--ink);
-  }
-  p{margin:0 0 1em; color:var(--ink-soft);}
-  a{color:inherit;}
-  .container{max-width:1120px;margin:0 auto;padding:0 24px;}
-  .eyebrow{
-    font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
-    font-weight:700;color:var(--accent-2);margin:0 0 12px;
-  }
-  .section{padding:96px 0;}
-  .section.alt{background:var(--surface);}
-  .btn{
-    display:inline-flex;align-items:center;justify-content:center;gap:8px;
-    font-family:'Manrope',sans-serif;font-weight:700;font-size:.98rem;
-    padding:14px 26px;border-radius:999px;border:none;cursor:pointer;
-    text-decoration:none;transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .btn:active{transform:scale(.97);}
-  .btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:var(--shadow);}
-  .btn-primary:hover{transform:translateY(-2px);}
-  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);}
-  .btn-ghost:hover{border-color:var(--accent-2);color:var(--accent-2);}
-  .btn-block{width:100%;}
-
-  /* nav */
-  header.nav{
-    position:sticky;top:0;z-index:50;
-    background:color-mix(in srgb, var(--bg) 82%, transparent);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav-inner{
-    max-width:1120px;margin:0 auto;padding:16px 24px;
-    display:flex;align-items:center;justify-content:space-between;gap:16px;
-  }
-  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;text-decoration:none;color:var(--ink);white-space:nowrap;}
-  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;}
-  .nav-links a{font-size:.92rem;font-weight:600;text-decoration:none;color:var(--ink-soft);}
-  .nav-links a:hover{color:var(--accent-2);}
-  @media (max-width:760px){ .nav-links{display:none;} }
-
-  /* hero */
-  .hero{padding-top:72px;padding-bottom:80px;}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;}
-  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
-  .hero h1{font-size:clamp(2.1rem,4.2vw,3.4rem);}
-  .hero .lede{font-size:1.1rem;max-width:46ch;}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;}
-  .hero-card{
-    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    padding:28px;box-shadow:var(--shadow);
-  }
-  .hero-card .stat-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem;}
-  .hero-card .stat-row span{flex:1;min-width:0;}
-  .hero-card .stat-row:last-child{border-bottom:none;}
-  .hero-card .stat-row b{flex:none;color:var(--accent);font-family:'Fraunces',serif;}
-
-  /* generic head */
-  .section-head{max-width:640px;margin:0 auto 48px;text-align:center;}
-  .section-head.left{text-align:left;margin:0 0 48px;}
-  .section-head h2{font-size:clamp(1.7rem,3vw,2.3rem);}
-
-  /* freebie */
-  .freebie-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-  @media (max-width:860px){ .freebie-grid{grid-template-columns:1fr;} }
-  .level-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
-  .level-item{display:flex;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
-  .level-num{
-    flex:none;width:34px;height:34px;border-radius:50%;
-    background:var(--accent-2);color:#fff;display:flex;align-items:center;justify-content:center;
-    font-family:'Fraunces',serif;font-weight:600;font-size:.95rem;
-  }
-  .level-item h3{font-size:1rem;margin:0 0 4px;}
-  .level-item p{margin:0;font-size:.92rem;}
-
-  .prompt-preview{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:20px;}
-  .prompt-chip{
-    background:var(--surface);border:1px solid var(--line);border-radius:12px;
-    padding:14px 16px;font-size:.88rem;color:var(--ink);
-  }
-  .prompt-chip b{color:var(--accent-2);display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;}
-
-  .form-card{
-    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px;box-shadow:var(--shadow);
-  }
-  .form-card h3{font-size:1.15rem;}
-  .divider-or{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--ink-soft);font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;}
-  .divider-or::before,.divider-or::after{content:"";flex:1;height:1px;background:var(--line);}
-  .privacy-note{font-size:.8rem;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);}
-
-  /* products */
-  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  @media (max-width:900px){ .product-grid{grid-template-columns:1fr;} }
-  .product-card{
-    background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
-    padding:26px;display:flex;flex-direction:column;gap:14px;
-  }
-  .product-card .price{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--accent);margin:0;}
-  .product-card .price small{font-family:'Manrope',sans-serif;font-size:.68rem;color:var(--ink-soft);font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
-  .product-card .old-price{font-family:'Manrope',sans-serif;font-size:.95rem;font-weight:600;color:var(--ink-soft);text-decoration:line-through;margin-right:8px;}
-  .sale-banner{
-    display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;
-    background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;
-    border-radius:999px;padding:12px 24px;font-weight:700;font-size:.92rem;
-    margin-bottom:36px;text-align:center;
-  }
-  .product-card ul{margin:0;padding-left:18px;font-size:.88rem;color:var(--ink-soft);display:flex;flex-direction:column;gap:6px;}
-  .industry-tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;}
-  .industry-tags span{font-size:.72rem;font-weight:700;color:var(--ink-soft);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap;}
-  .product-card h3{font-size:1.2rem;}
-
-  .pay-panel{
-    margin-top:40px;background:var(--surface);border:1px solid var(--accent-2);border-radius:var(--radius);
-    padding:30px;box-shadow:var(--shadow);display:none;
-  }
-  .pay-panel.open{display:block;}
-  .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:18px;}
-  @media (max-width:760px){ .pay-grid{grid-template-columns:1fr;} }
-  .info-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.9rem;}
-  .info-row:last-child{border-bottom:none;}
-  .info-row b{font-weight:700;}
-  .placeholder-tag{
-    display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.04em;
-    color:var(--accent-2);background:color-mix(in srgb, var(--accent-2) 14%, transparent);
-    padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:middle;
-  }
-
-  /* soon */
-  .soon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-  @media (max-width:960px){ .soon-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:600px){ .soon-grid{grid-template-columns:1fr;} }
-  .soon-card{
-    background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:22px;
-    display:flex;flex-direction:column;gap:10px;
-  }
-  .badge{
-    align-self:flex-start;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-    background:var(--accent-2);color:#fff;padding:4px 10px;border-radius:999px;
-  }
-  .soon-card h3{font-size:1.02rem;margin:0;}
-  .soon-card p{font-size:.86rem;margin:0;}
-
-  /* about */
-  .about-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:center;}
-  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
-  .avatar-frame{
-    width:100%;aspect-ratio:1/1;border-radius:24px;background:linear-gradient(155deg,var(--accent),var(--accent-2));
-    display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Fraunces',serif;font-size:3rem;
-  }
-
-  footer{background:var(--ink);color:#fff;padding:56px 0 28px;}
-  footer .container{display:flex;flex-direction:column;gap:28px;}
-  .footer-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;align-items:flex-start;}
-  .footer-links{display:flex;gap:18px;flex-wrap:wrap;}
-  .footer-links a{text-decoration:none;font-weight:600;font-size:.9rem;color:#fff;opacity:.85;}
-  .footer-links a:hover{opacity:1;color:#FF9DB4;}
-  footer p{color:#C9BFD1;}
-  .footer-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:20px;font-size:.8rem;color:#B9AFC4;}
-
-  #toast{
-    position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);
-    background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;font-size:.88rem;font-weight:600;
-    box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:all .25s ease;z-index:100;
-  }
-  #toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-</style>
+<link rel="stylesheet" href="styles.css">
 
 <header class="nav">
   <div class="nav-inner">
     <a class="logo" href="#hero">Belinda Dinh</a>
     <ul class="nav-links">
-      <li><a href="#freebie">Tài liệu miễn phí</a></li>
+      <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+      <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
       <li><a href="#products">Sản phẩm</a></li>
-      <li><a href="#soon">Sắp ra mắt</a></li>
+      <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
       <li><a href="#about">Về mình</a></li>
     </ul>
-    <a class="btn btn-primary" href="#freebie" style="padding:10px 20px;font-size:.85rem;">Nhận Starter Kit</a>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
   </div>
 </header>
 
@@ -239,11 +22,11 @@
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Content Marketing × Ứng dụng AI</p>
-        <h1>Biến AI thành trợ lý sáng tạo thật sự của riêng bạn</h1>
+        <h1>Biến AI thành trợ lý sáng tạo cho công việc, thương hiệu và nội dung mỗi ngày</h1>
         <p class="lede">Mình chia sẻ cách ứng dụng AI vào nội dung, công việc và thương hiệu mỗi ngày — từ những công cụ dễ dùng đến tư duy xây workflow hiệu quả hơn. Không lý thuyết suông, chỉ những gì bạn áp dụng được ngay.</p>
         <div class="hero-cta">
-          <a href="#freebie" class="btn btn-primary">Nhận AI Content Starter Kit — miễn phí</a>
-          <a href="#products" class="btn btn-ghost">Xem sản phẩm</a>
+          <a href="workflow-finder.html" class="btn btn-primary">Tìm workflow phù hợp với tôi</a>
+          <a href="#freebie" class="btn btn-ghost">Nhận Starter Kit miễn phí</a>
         </div>
       </div>
       <div class="hero-card">
@@ -252,6 +35,34 @@
         <div class="stat-row"><span>Prompt sẵn dùng cho content creator</span><b>50</b></div>
         <div class="stat-row"><span>Nhóm chủ đề: ý tưởng, caption, video, email, biên tập</span><b>05</b></div>
         <div class="stat-row"><span>Chi phí</span><b>0đ</b></div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="paths-grid">
+        <a class="path-card" href="thu-vien-workflow.html">
+          <span class="path-icon">⚡</span>
+          <h3>Tôi muốn làm content nhanh hơn</h3>
+          <p>Xem workflow biến 1 ý tưởng thành cả bộ nội dung đa kênh.</p>
+          <span class="path-arrow">Xem workflow →</span>
+        </a>
+        <a class="path-card" href="thu-vien-workflow.html">
+          <span class="path-icon">🔗</span>
+          <h3>Tôi muốn xây AI workflow</h3>
+          <p>Học cách nối nhiều bước lại thành 1 quy trình tự động.</p>
+          <span class="path-arrow">Xem workflow →</span>
+        </a>
+        <a class="path-card" href="thu-vien-workflow.html#tai-lieu-thanh-web">
+          <span class="path-icon">🧩</span>
+          <h3>Tôi muốn biến tài liệu thành công cụ/web</h3>
+          <p>Ví dụ thật: PDF/tài liệu ôn tập → web trắc nghiệm tương tác.</p>
+          <span class="path-arrow">Xem workflow →</span>
+        </a>
+        <a class="path-card" href="cong-cu-ai.html">
+          <span class="path-icon">🧭</span>
+          <h3>Tôi chưa biết nên dùng AI nào</h3>
+          <p>Danh mục công cụ AI theo từng nhu cầu, dễ chọn.</p>
+          <span class="path-arrow">Xem danh mục →</span>
+        </a>
       </div>
     </div>
   </section>
