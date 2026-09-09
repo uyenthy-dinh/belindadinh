@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lộ Trình Thành Thạo AI — Belinda Dinh</title>
+<meta name="description" content="Báo cáo nghiên cứu 2026: cách người dùng AI thực sự đang dùng và đang thiếu gì, chuyển hoá thành lộ trình 5 giai đoạn.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F6F3F7;
+    --surface:#FFFFFF;
+    --surface-2:#EFE9FB;
+    --ink:#241B2E;
+    --ink-soft:#5B4F66;
+    --ink-faint:#8C7F97;
+    --line:#E4DEE8;
+    --accent:#E94E77;
+    --accent-ink:#C43A5F;
+    --accent2:#6C5CE7;
+    --positive:#2C9C6B;
+    --risk:#C6432E;
+    --shadow: 0 1px 2px rgba(36,27,46,0.06), 0 8px 24px -12px rgba(36,27,46,0.14);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#1B1420;
+      --surface:#241B2E;
+      --surface-2:#2E2438;
+      --ink:#F3EEF7;
+      --ink-soft:#C9BFD1;
+      --ink-faint:#9A8DA8;
+      --line:#392C46;
+      --accent:#FF6E90;
+      --accent-ink:#FF6E90;
+      --accent2:#9C8CFF;
+      --positive:#4FBE93;
+      --risk:#E2685A;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#1B1420;
+    --surface:#241B2E;
+    --surface-2:#2E2438;
+    --ink:#F3EEF7;
+    --ink-soft:#C9BFD1;
+    --ink-faint:#9A8DA8;
+    --line:#392C46;
+    --accent:#FF6E90;
+    --accent-ink:#FF6E90;
+    --accent2:#9C8CFF;
+    --positive:#4FBE93;
+    --risk:#E2685A;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,-apple-system,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .report{
+    max-width:920px;
+    margin:0 auto;
+    padding:56px 24px 80px;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',Georgia,serif;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  em{font-style:italic; color:var(--accent-ink);}
+  a{color:var(--accent-ink);}
+  .mono{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;}
+
+  .back-link{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:'Manrope',sans-serif; font-weight:700; font-size:13px;
+    color:var(--ink-soft); text-decoration:none; margin-bottom:28px;
+  }
+  .back-link:hover{color:var(--accent2);}
+
+  /* header */
+  .kicker{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--accent2);
+    margin-bottom:14px;
+  }
+  h1{font-size:38px; font-weight:600; line-height:1.15; max-width:14ch;}
+  .lede{
+    margin-top:16px;
+    font-size:16.5px;
+    line-height:1.65;
+    color:var(--ink-soft);
+    max-width:62ch;
+  }
+  .meta{
+    margin-top:22px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 14px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    color:var(--ink-faint);
+    letter-spacing:0.02em;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+  }
+
+  section{margin-top:64px;}
+  .section-head{margin-bottom:22px;}
+  .section-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--accent2);
+    letter-spacing:0.06em;
+  }
+  h2{font-size:24px; font-weight:600; margin-top:6px;}
+  .section-sub{font-size:14.5px; color:var(--ink-soft); margin-top:8px; max-width:60ch; line-height:1.6;}
+
+  /* stat grid */
+  .stat-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  .stat-tile{
+    background:var(--surface);
+    padding:22px 20px;
+  }
+  .stat-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-variant-numeric:tabular-nums;
+    font-size:30px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1;
+  }
+  .stat-num .u{font-size:17px; color:var(--accent-ink); margin-left:1px;}
+  .stat-label{margin-top:10px; font-size:13px; line-height:1.5; color:var(--ink-soft);}
+  .stat-src{margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-faint);}
+
+  /* needs grid */
+  .needs-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+  .need-card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 22px;
+  }
+  .need-card h3{font-size:16px; font-weight:600; font-style:italic;}
+  .need-card p{margin:10px 0 0; font-size:13.5px; line-height:1.6; color:var(--ink-soft);}
+  .cite{font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--ink-faint); text-decoration:none;}
+
+  /* barrier list */
+  .barrier-list{display:flex; flex-direction:column; border-top:1px solid var(--line);}
+  .barrier-row{
+    display:grid;
+    grid-template-columns:14px 1fr auto;
+    align-items:baseline;
+    gap:14px;
+    padding:16px 4px;
+    border-bottom:1px solid var(--line);
+  }
+  .dot{width:8px; height:8px; border-radius:50%; background:var(--risk); align-self:center; justify-self:center;}
+  .barrier-row .name{font-size:14.5px; font-weight:500;}
+  .barrier-row .desc{display:block; margin-top:4px; font-size:13px; color:var(--ink-soft); font-weight:400; line-height:1.55;}
+  .barrier-row .val{font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--risk); font-weight:600; white-space:nowrap;}
+
+  /* chart */
+  .chart-wrap{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px 26px 18px;
+  }
+  .chart-title{font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:4px;}
+  .chart-note{font-size:12px; color:var(--ink-faint); margin-bottom:18px;}
+  svg text{font-family:'IBM Plex Mono',monospace;}
+
+  /* roadmap */
+  .roadmap{position:relative; margin-top:8px;}
+  .roadmap::before{
+    content:"";
+    position:absolute;
+    left:23px; top:8px; bottom:8px;
+    width:2px;
+    background:var(--line);
+  }
+  .stage{
+    position:relative;
+    display:grid;
+    grid-template-columns:48px 1fr;
+    gap:22px;
+    padding-bottom:36px;
+  }
+  .stage:last-child{padding-bottom:0;}
+  .stage-marker{
+    position:relative;
+    z-index:1;
+    width:48px; height:48px;
+    border-radius:50%;
+    background:var(--accent2);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:17px;
+    color:#fff;
+  }
+  .stage-body{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:20px 24px;
+    box-shadow:var(--shadow);
+  }
+  .stage-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 14px; justify-content:space-between;}
+  .stage-head h3{font-size:18px; font-weight:600;}
+  .duration{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;
+    color:var(--accent-ink);
+    background:color-mix(in srgb, var(--accent) 14%, transparent);
+    padding:3px 9px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .stage-goal{margin-top:8px; font-size:14px; color:var(--ink-soft); line-height:1.6;}
+  .stage-fields{
+    margin-top:16px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px 24px;
+    border-top:1px solid var(--line);
+    padding-top:14px;
+  }
+  .field-label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .field-value{margin-top:5px; font-size:13.5px; color:var(--ink); line-height:1.55;}
+
+  /* package table */
+  .table-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:14px;}
+  table{border-collapse:collapse; width:100%; min-width:640px; background:var(--surface);}
+  th,td{text-align:left; padding:13px 16px; font-size:13px; line-height:1.55; border-bottom:1px solid var(--line); vertical-align:top;}
+  th{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-faint);
+    background:var(--surface-2);
+    font-weight:600;
+  }
+  tr:last-child td{border-bottom:none;}
+  td.stage-cell{font-weight:600; color:var(--accent-ink); white-space:nowrap;}
+
+  /* sources */
+  .sources{
+    margin-top:64px;
+    padding-top:24px;
+    border-top:1px solid var(--line);
+  }
+  .sources h2{font-size:14px; font-family:'IBM Plex Mono',monospace; font-weight:600; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-faint);}
+  .sources ol{margin:16px 0 0; padding-left:20px; font-size:12px; color:var(--ink-soft); line-height:2;}
+  .sources a{color:var(--ink-soft); word-break:break-all;}
+  .sources li{padding-left:4px;}
+
+  @media (max-width:640px){
+    h1{font-size:30px;}
+    .needs-grid{grid-template-columns:1fr;}
+    .stage-fields{grid-template-columns:1fr;}
+    .stage{grid-template-columns:38px 1fr; gap:14px;}
+    .stage-marker{width:38px; height:38px; font-size:14px;}
+    .roadmap::before{left:18px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="report">
+
+  <a class="back-link" href="index.html">← Về trang chủ Belinda Dinh</a>
+
+  <header>
+    <div class="kicker">Nghiên cứu thị trường · Tháng 9/2026</div>
+    <h1>Lộ trình thành thạo AI</h1>
+    <p class="lede">Tổng hợp dữ liệu mới nhất về cách người dùng AI — từ cá nhân đến doanh nghiệp — đang thực sự sử dụng và đang thiếu gì, chuyển hoá thành lộ trình 5 giai đoạn để đóng gói tài liệu đào tạo, từ lúc mới tìm hiểu đến khi AI trở thành một phần xuyên suốt trong công việc hằng ngày.</p>
+    <div class="meta">
+      <span>13 nguồn: Deloitte · McKinsey · Microsoft WTI · Gallup · WEF · Skillsoft</span>
+      <span>·</span>
+      <span>Phạm vi: người dùng cá nhân &amp; doanh nghiệp, có đối chiếu thị trường Việt Nam</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">01 — Bức tranh hiện tại</div>
+      <h2>Dùng thì nhiều, nhưng chưa sâu</h2>
+      <p class="section-sub">Tỷ lệ tiếp cận AI tăng vọt trong một năm qua, nhưng khoảng cách giữa "có dùng" và "dùng hiệu quả, xuyên suốt" vẫn rất lớn — ở cả người lao động lẫn tổ chức.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-tile">
+        <div class="stat-num">88<span class="u">%</span></div>
+        <div class="stat-label">Lao động tri thức Việt Nam đã dùng AI tạo sinh cho công việc — cao hơn mức trung bình toàn cầu 75%</div>
+        <div class="stat-src">Microsoft WTI 2026 [7]</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">41<span class="u">%</span></div>
+        <div class="stat-label">Nhân viên thực sự dùng AI cho công việc, dù 60% đã được cấp quyền truy cập công cụ chính thức</div>
+        <div class="stat-src">Deloitte 2026 [1]</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">79<span class="u">%</span></div>
+        <div class="stat-label">Tổ chức gặp khó khăn khi triển khai AI — tăng hai chữ số so với 2025</div>
+        <div class="stat-src">Deloitte / WRITER [1][2]</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">35<span class="u">%</span></div>
+        <div class="stat-label">Nhân viên chưa nhận được bất kỳ hình thức đào tạo AI nào từ nơi làm việc</div>
+        <div class="stat-src">Skillsoft 2026 [5]</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">15<span class="u">%</span></div>
+        <div class="stat-label">Doanh nghiệp Việt Nam có đội ngũ đủ năng lực triển khai AI — dù 67% định tăng đầu tư 2 năm tới</div>
+        <div class="stat-src">FSB / VnEconomy [13]</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-num">&lt;10<span class="u">%</span></div>
+        <div class="stat-label">Nhân viên đạt đến giai đoạn "cộng tác bán tự động" — mức dùng AI sâu nhất hiện có</div>
+        <div class="stat-src">WEF [11]</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">02 — Nhu cầu cấp thiết</div>
+      <h2>Điều người dùng AI cần nhất lúc này</h2>
+      <p class="section-sub">Không phải thêm một công cụ mới. Bốn nhu cầu dưới đây lặp lại xuyên suốt các khảo sát 2026, và đều là thứ <em>tài liệu</em> — chứ không phải phần mềm — có thể giải quyết trực tiếp.</p>
+    </div>
+    <div class="needs-grid">
+      <div class="need-card">
+        <h3>Đào tạo theo đúng việc thật</h3>
+        <p>Hơn một nửa nhân viên ở nhóm bị ảnh hưởng nhiều nhất nói chương trình đào tạo thiếu phần thực hành trên chính công việc của họ; đào tạo chung chung khiến chỉ 18% cảm thấy đủ khả năng làm việc độc lập với AI.</p>
+        <a class="cite" href="#src-4">[4][5]</a>
+      </div>
+      <div class="need-card">
+        <h3>Niềm tin &amp; minh bạch</h3>
+        <p>Khoảng cách 27 điểm phần trăm giữa lãnh đạo (78% lạc quan) và nhân viên (~51%) về AI. Người dùng cần thấy AI đủ tin cậy, giải thích được và an toàn dữ liệu trước khi giao việc quan trọng.</p>
+        <a class="cite" href="#src-8">[8][9]</a>
+      </div>
+      <div class="need-card">
+        <h3>Thời gian được bảo vệ</h3>
+        <p>Thiếu thời gian là rào cản upskilling số một (41%) — nhưng chỉ cần tối đa 2 giờ/tuần được chính thức bảo vệ là đủ tạo chuyển biến rõ rệt về kỹ năng.</p>
+        <a class="cite" href="#src-4">[4]</a>
+      </div>
+      <div class="need-card">
+        <h3>Quy trình thiết kế lại, không dán thêm</h3>
+        <p>Chỉ 21% tổ chức thực sự thiết kế lại quy trình quanh AI tạo sinh; phần lớn còn lại chỉ gắn AI như lớp phủ bên ngoài quy trình cũ, nên rất khó đo được giá trị mang lại.</p>
+        <a class="cite" href="#src-6">[6]</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">03 — Rào cản</div>
+      <h2>Vì sao người dùng chững lại</h2>
+    </div>
+    <div class="barrier-list">
+      <div class="barrier-row">
+        <span class="dot"></span>
+        <span class="name">Thiếu thời gian được cấp phép<span class="desc">Rào cản upskilling được nhắc đến nhiều nhất, vượt xa các lý do kỹ thuật.</span></span>
+        <span class="val">41%</span>
+      </div>
+      <div class="barrier-row">
+        <span class="dot"></span>
+        <span class="name">Đào tạo chung chung, thiếu thực hành thật<span class="desc">Nội dung học không gắn với tác vụ AI đang thực sự làm trong công việc của họ.</span></span>
+        <span class="val">&gt;50%</span>
+      </div>
+      <div class="barrier-row">
+        <span class="dot"></span>
+        <span class="name">Nghi ngại bảo mật &amp; rủi ro dữ liệu<span class="desc">Lãnh đạo thừa nhận từng gặp rò rỉ hoặc sự cố do nhân viên dùng công cụ AI chưa được duyệt.</span></span>
+        <span class="val">67%</span>
+      </div>
+      <div class="barrier-row">
+        <span class="dot"></span>
+        <span class="name">Lo mất việc, mất quyền kiểm soát<span class="desc">Lo ngại về tác động tương lai của AI, một phần cho rằng cơ hội việc làm sẽ giảm.</span></span>
+        <span class="val">52%</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">04 — Điểm nghẽn</div>
+      <h2>Phần lớn người dùng đang kẹt ở giữa đường</h2>
+      <p class="section-sub">Bốn giai đoạn dùng AI của một cá nhân: hỗ trợ thông tin → hỗ trợ tác vụ → ủy quyền → cộng tác bán tự động. Đại đa số dừng lại ở hai bước giữa.</p>
+    </div>
+    <div class="chart-wrap">
+      <div class="chart-title">Phân bố giai đoạn sử dụng AI hiện nay</div>
+      <div class="chart-note">% nhân viên đạt đến từng mức — theo khung 4 giai đoạn của WEF/BCG</div>
+      <svg viewBox="0 0 640 130" width="100%" height="130" role="img" aria-label="Biểu đồ phân bố giai đoạn sử dụng AI">
+        <line x1="200" y1="10" x2="200" y2="118" stroke="var(--line)" stroke-width="1"/>
+        <line x1="600" y1="10" x2="600" y2="118" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 4"/>
+        <text x="600" y="8" font-size="9" fill="var(--ink-faint)" text-anchor="end">100%</text>
+
+        <text x="0" y="34" font-size="12" fill="var(--ink-soft)">Giai đoạn 2–3</text>
+        <text x="0" y="47" font-size="10" fill="var(--ink-faint)">Hỗ trợ tác vụ / bắt đầu ủy quyền</text>
+        <rect x="200" y="24" width="340" height="22" rx="4" fill="var(--ink-soft)" opacity="0.35"/>
+        <text x="548" y="40" font-size="13" font-weight="600" fill="var(--ink)">&gt;85%</text>
+
+        <text x="0" y="94" font-size="12" fill="var(--ink-soft)">Giai đoạn 4</text>
+        <text x="0" y="107" font-size="10" fill="var(--ink-faint)">Cộng tác bán tự động</text>
+        <rect x="200" y="84" width="38" height="22" rx="4" fill="var(--positive)"/>
+        <text x="246" y="100" font-size="13" font-weight="600" fill="var(--positive)">&lt;10%</text>
+      </svg>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">05 — Lộ trình đề xuất</div>
+      <h2>5 giai đoạn, từ tìm hiểu đến xuyên suốt</h2>
+      <p class="section-sub">Cấu trúc để đóng gói tài liệu/đào tạo nội bộ — mỗi giai đoạn có mục tiêu, trọng tâm kỹ năng, định dạng tài liệu và tín hiệu để biết khi nào chuyển giai đoạn tiếp theo.</p>
+    </div>
+
+    <div class="roadmap">
+
+      <div class="stage">
+        <div class="stage-marker">0</div>
+        <div class="stage-body">
+          <div class="stage-head"><h3>Nhận thức &amp; an tâm</h3><span class="duration">1 buổi</span></div>
+          <p class="stage-goal">Xoá rào cản tâm lý trước khi dạy kỹ năng — vì 52% người dùng lo ngại về tác động của AI, và AI dễ khiến người ta cảm thấy bị đe doạ vai trò của mình.</p>
+          <div class="stage-fields">
+            <div><div class="field-label">Trọng tâm</div><div class="field-value">AI làm được gì / không làm được gì, chính sách sử dụng &amp; bảo mật dữ liệu rõ ràng</div></div>
+            <div><div class="field-label">Định dạng tài liệu</div><div class="field-value">One-pager chính sách + FAQ xoá lo ngại thường gặp</div></div>
+            <div><div class="field-label">Tín hiệu hoàn thành</div><div class="field-value">Người học tự mở công cụ AI được duyệt và thử một câu hỏi thật</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-marker">1</div>
+        <div class="stage-body">
+          <div class="stage-head"><h3>Làm quen</h3><span class="duration">2–4 tuần</span></div>
+          <p class="stage-goal">Dùng AI như "trợ lý thông tin": hỏi đáp, tóm tắt, tra cứu. Mục tiêu là hình thành phản xạ, không phải thành thạo.</p>
+          <div class="stage-fields">
+            <div><div class="field-label">Trọng tâm</div><div class="field-value">Viết prompt cơ bản, đọc &amp; kiểm chứng kết quả AI trả về</div></div>
+            <div><div class="field-label">Định dạng tài liệu</div><div class="field-value">Cheat-sheet prompt theo vai trò + video ngắn 5–10 phút</div></div>
+            <div><div class="field-label">Tín hiệu hoàn thành</div><div class="field-value">Tự dùng AI hằng ngày cho ít nhất một việc lặp lại, không cần nhắc</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-marker">2</div>
+        <div class="stage-body">
+          <div class="stage-head"><h3>Tích hợp vào việc hằng ngày</h3><span class="duration">4–8 tuần</span></div>
+          <p class="stage-goal">AI hỗ trợ tác vụ cụ thể theo đúng vai trò — soạn thảo, phân tích, kiểm tra chéo — thực hành trên công việc thật, không phải case study chung chung.</p>
+          <div class="stage-fields">
+            <div><div class="field-label">Trọng tâm</div><div class="field-value">Thư viện prompt &amp; mẫu theo phòng ban, đánh giá chất lượng output</div></div>
+            <div><div class="field-label">Định dạng tài liệu</div><div class="field-value">Wiki nội bộ có ví dụ thật, cập nhật từ phản hồi người dùng</div></div>
+            <div><div class="field-label">Tín hiệu hoàn thành</div><div class="field-value">AI xuất hiện trong quy trình làm việc thường ngày, không phải một bước phụ</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-marker">3</div>
+        <div class="stage-body">
+          <div class="stage-head"><h3>Ủy quyền quy trình</h3><span class="duration">1 quý</span></div>
+          <p class="stage-goal">Chuyển từ dùng AI cho từng tác vụ sang giao cả một quy trình nhiều bước — nối công cụ, dùng agent, đo lường kết quả. Đây là nơi 79% tổ chức đang gặp khó.</p>
+          <div class="stage-fields">
+            <div><div class="field-label">Trọng tâm</div><div class="field-value">Thiết kế lại workflow quanh AI, kết nối agent với hệ thống hiện có</div></div>
+            <div><div class="field-label">Định dạng tài liệu</div><div class="field-value">Playbook quy trình (SOP) + bảng đo ROI theo từng workflow</div></div>
+            <div><div class="field-label">Tín hiệu hoàn thành</div><div class="field-value">Có ít nhất một workflow chạy được với con người chỉ phê duyệt, không thao tác từng bước</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <div class="stage-marker">4</div>
+        <div class="stage-body">
+          <div class="stage-head"><h3>Cộng tác bán tự động</h3><span class="duration">Liên tục</span></div>
+          <p class="stage-goal">AI trở thành một phần xuyên suốt công việc: agent vận hành, con người định hướng và chịu trách nhiệm cuối. Dưới 10% người dùng hiện đạt tới đây — đây cũng là khoảng trống cơ hội lớn nhất.</p>
+          <div class="stage-fields">
+            <div><div class="field-label">Trọng tâm</div><div class="field-value">Quản trị AI (governance), audit định kỳ, ra quyết định có đạo đức khi giao quyền cho agent</div></div>
+            <div><div class="field-label">Định dạng tài liệu</div><div class="field-value">Khung quản trị + checklist audit cho ban điều hành/compliance</div></div>
+            <div><div class="field-label">Tín hiệu hoàn thành</div><div class="field-value">Có cơ chế rà soát định kỳ, không còn phụ thuộc vào một cá nhân "biết dùng AI"</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <div class="section-num">06 — Đóng gói</div>
+      <h2>Gợi ý đóng gói tài liệu theo từng giai đoạn</h2>
+    </div>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Giai đoạn</th><th>Định dạng tài liệu</th><th>Kênh phân phối</th><th>Nhịp cập nhật</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="stage-cell">0 · An tâm</td><td>One-pager chính sách sử dụng AI + FAQ</td><td>Email onboarding</td><td>Khi chính sách thay đổi</td></tr>
+          <tr><td class="stage-cell">1 · Làm quen</td><td>Cheat-sheet prompt cơ bản theo vai trò, video ngắn</td><td>LMS / kênh chat ghim sẵn</td><td>Hàng quý</td></tr>
+          <tr><td class="stage-cell">2 · Tích hợp</td><td>Thư viện prompt &amp; ví dụ thật theo phòng ban</td><td>Wiki nội bộ</td><td>Hàng tháng, theo phản hồi thực tế</td></tr>
+          <tr><td class="stage-cell">3 · Ủy quyền</td><td>Playbook quy trình, hướng dẫn nối agent/công cụ</td><td>Chuẩn vận hành (SOP)</td><td>Theo mỗi workflow mới</td></tr>
+          <tr><td class="stage-cell">4 · Cộng tác</td><td>Khung quản trị, checklist audit, bảng KPI/ROI</td><td>Ban điều hành / compliance</td><td>Rà soát định kỳ liên tục</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="sources">
+    <h2>Nguồn</h2>
+    <ol>
+      <li id="src-1">Deloitte — <em>The State of AI in the Enterprise, 2026</em> — <a href="https://www.deloitte.com/us/en/what-we-do/capabilities/applied-artificial-intelligence/content/state-of-ai-in-the-enterprise.html" target="_blank" rel="noopener">deloitte.com</a></li>
+      <li id="src-2">WRITER — <em>Enterprise AI adoption in 2026</em> — <a href="https://writer.com/blog/enterprise-ai-adoption-2026/" target="_blank" rel="noopener">writer.com</a></li>
+      <li id="src-3">SHRM — <em>Navigating AI in the Workplace: 2026</em> — <a href="https://www.shrm.org/topics-tools/research/navigating-ai-in-the-workplace/full-report" target="_blank" rel="noopener">shrm.org</a></li>
+      <li id="src-4">Study.com — <em>State of AI Jobs and Skills Report 2026</em> — <a href="https://study.com/resources/state-of-ai-jobs-and-skills.html" target="_blank" rel="noopener">study.com</a></li>
+      <li id="src-5">Skillsoft — <em>The AI skill gap in the workplace: 2026</em> — <a href="https://www.skillsoft.com/blog/the-ai-skills-gap-in-the-workplace-the-statistics-that-matter-in-2026" target="_blank" rel="noopener">skillsoft.com</a></li>
+      <li id="src-6">McKinsey State of AI data, via Founder Reports — <a href="https://founderreports.com/ai-in-the-workplace-statistics/" target="_blank" rel="noopener">founderreports.com</a></li>
+      <li id="src-7">Microsoft — <em>Work Trend Index 2026</em> (bản Việt Nam) — <a href="https://news.microsoft.com/source/asia/2026/06/24/bao-cao-chi-so-xu-huong-cong-viec-nam-2026-luc-luong-lao-dong-viet-nam-da-san-sang-cho-ky-nguyen-ai-doanh-nghiep-can-chuyen-minh-de-but-pha/?lang=vi" target="_blank" rel="noopener">news.microsoft.com</a></li>
+      <li id="src-8">Gallup — <em>AI in the Workplace: What Separates Adopters and Holdouts</em> — <a href="https://www.gallup.com/workplace/704252/workplace-separates-adopters-holdouts.aspx" target="_blank" rel="noopener">gallup.com</a></li>
+      <li id="src-9">Larridin — <em>AI Workforce Readiness: Closing the Trust Gap</em> — <a href="https://larridin.com/blog/ai-workforce-psychological-impact" target="_blank" rel="noopener">larridin.com</a></li>
+      <li id="src-10">Joget (tổng hợp Gartner/IDC) — <em>AI Agent Adoption in 2026</em> — <a href="https://joget.com/ai-agent-adoption-in-2026-what-the-analysts-data-shows/" target="_blank" rel="noopener">joget.com</a></li>
+      <li id="src-11">World Economic Forum — <em>The 5 faces of human readiness for AI adoption</em> — <a href="https://www.weforum.org/stories/artificial-intelligence/ai-workplace-adoption-readiness/" target="_blank" rel="noopener">weforum.org</a></li>
+      <li id="src-12">Forbes — <em>Why Prompt Engineering Isn't The Most Valuable AI Skill In 2026</em> — <a href="https://www.forbes.com/sites/bernardmarr/2026/01/20/why-prompt-engineering-isnt-the-most-valuable-ai-skill-in-2026/" target="_blank" rel="noopener">forbes.com</a></li>
+      <li id="src-13">FSB / VnEconomy — <em>Xu hướng AI 2026 tại doanh nghiệp Việt Nam</em> — <a href="https://fpub.fsb.edu.vn/xu-huong-ai-2026/" target="_blank" rel="noopener">fpub.fsb.edu.vn</a></li>
+    </ol>
+  </div>
+
+</div>
+
+</body>
+</html>
