@@ -105,9 +105,10 @@
     background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
     padding:28px;box-shadow:var(--shadow);
   }
-  .hero-card .stat-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem;}
+  .hero-card .stat-row{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--line);font-size:.92rem;}
+  .hero-card .stat-row span{flex:1;min-width:0;}
   .hero-card .stat-row:last-child{border-bottom:none;}
-  .hero-card .stat-row b{color:var(--accent);font-family:'Fraunces',serif;}
+  .hero-card .stat-row b{flex:none;color:var(--accent);font-family:'Fraunces',serif;}
 
   /* generic head */
   .section-head{max-width:640px;margin:0 auto 48px;text-align:center;}
