@@ -60,6 +60,8 @@
     font-weight:700;color:var(--accent-2);margin:0 0 12px;
   }
   .section{padding:96px 0;}
+  .section[id]{scroll-margin-top:84px;}
+  html{scroll-behavior:smooth;}
   .section.alt{background:var(--surface);}
   .btn{
     display:inline-flex;align-items:center;justify-content:center;gap:8px;
@@ -301,8 +303,10 @@
 .filter-chip{
   font-family:'Manrope',sans-serif;font-weight:700;font-size:.82rem;padding:8px 16px;border-radius:999px;
   border:1.5px solid var(--line);background:var(--surface);color:var(--ink-soft);cursor:pointer;
+  text-decoration:none;transition:border-color .15s ease, color .15s ease;
 }
 .filter-chip.active{border-color:var(--accent);background:var(--accent);color:#fff;}
+.filter-chip:hover{border-color:var(--accent-2);color:var(--accent-2);}
 .tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 @media (max-width:900px){ .tool-grid{grid-template-columns:1fr 1fr;} }
 @media (max-width:600px){ .tool-grid{grid-template-columns:1fr;} }
@@ -366,6 +370,7 @@
 @media (prefers-reduced-motion: reduce){
   .bg-blob,.float-icon,.spin-slow{animation:none !important;}
   .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
+  html{scroll-behavior:auto;}
 }
 
 /* lively hover lift for all card-style components */
