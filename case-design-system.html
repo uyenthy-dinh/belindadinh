@@ -1,0 +1,97 @@
+<title>Case Study: Design System — Belinda Dinh</title>
+<meta name="description" content="Cách dựng bộ nhận diện thương hiệu nhất quán cho toàn bộ website bằng AI, áp dụng lại được cho mọi trang mới.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Belinda Dinh</a>
+    <ul class="nav-links">
+      <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+      <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
+      <li><a href="index.html#products">Sản phẩm</a></li>
+      <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="index.html#about">Về mình</a></li>
+    </ul>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
+  </div>
+</header>
+
+<main>
+  <section class="section page-hero">
+    <div class="container">
+      <div class="crumb"><a href="case-study.html">← Case Study</a></div>
+      <span class="badge" style="background:var(--accent);margin-bottom:14px;display:inline-block;">Case thật</span>
+      <p class="eyebrow">Case study · Thương hiệu</p>
+      <h1>Dựng bộ nhận diện nhất quán cho toàn bộ website bằng AI</h1>
+      <p class="lede">Bộ màu, font, component dùng chung cho toàn bộ 9 trang của chính website này — làm 1 lần, áp dụng lại cho mọi trang mới.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="wf-meta">
+        <div class="wf-meta-card"><div class="lbl">Vấn đề giải quyết</div><div class="val">Mỗi trang mới làm lại màu/font/layout từ đầu, dễ lệch tông, trông không đồng bộ giữa các trang.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Công cụ cần dùng</div><div class="val">Claude để đề xuất bảng màu và viết CSS, Google Fonts cho font chữ.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Kết quả thật</div><div class="val">1 file styles.css dùng chung cho toàn bộ 9 trang, hỗ trợ cả chế độ sáng và tối.</div></div>
+      </div>
+
+      <div class="section-head left">
+        <p class="eyebrow">Hướng dẫn chi tiết</p>
+        <h2>Các bước thực hiện</h2>
+      </div>
+      <ol class="wf-steps">
+        <li><b>Mô tả định hướng thương hiệu bằng lời.</b> Cảm xúc muốn truyền tải (ví dụ: sáng tạo, gần gũi, đáng tin), tông màu mong muốn, và những gì cần tránh — như mô-típ "web do AI tạo" điển hình (cream+serif+terracotta, gradient tím-xanh mặc định).</li>
+        <li><b>Để AI đề xuất bảng màu đầy đủ.</b> Cho cả 2 chế độ sáng và tối: màu nền, bề mặt, chữ chính, chữ phụ, 2 màu nhấn, màu viền — không chỉ 1-2 màu chủ đạo.</li>
+        <li><b>Chọn cặp font.</b> 1 font tiêu đề có cá tính (ở đây là Fraunces) + 1 font nội dung dễ đọc (Manrope), load qua Google Fonts, luôn có fallback stack.</li>
+        <li><b>Dựng các thành phần dùng lại được.</b> Nút, thẻ, badge, thanh điều hướng, footer — gom hết vào 1 file CSS chung duy nhất, không rải rác từng trang.</li>
+        <li><b>Tái dùng cho mọi trang mới.</b> Trang mới chỉ cần gắn file CSS này và dùng đúng các class có sẵn, không viết lại style từ đầu mỗi lần.</li>
+      </ol>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Prompt mẫu</p>
+        <h2>Prompt thật đã dùng cho case này</h2>
+      </div>
+      <div class="prompt-chip" style="font-size:.95rem;padding:20px;">
+        "Tôi muốn 1 bộ nhận diện tông hồng-tím, cảm giác sáng tạo và gần gũi, tránh mô-típ web do AI tạo (không cream+serif+terracotta, không gradient tím-xanh mặc định). Hãy đề xuất bảng màu đầy đủ cho cả chế độ sáng và tối, gợi ý 1 cặp font tiêu đề + nội dung từ Google Fonts, và viết sẵn CSS cho các thành phần dùng lại: nút, thẻ, badge, thanh điều hướng."
+      </div>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Kết quả đầu ra</p>
+        <h2>Bạn nhận được gì sau workflow này</h2>
+      </div>
+      <p>1 file styles.css dùng chung cho toàn bộ website — giao diện đồng nhất từ trang chủ đến từng trang con, hỗ trợ cả chế độ sáng và tối. Không cần thuê designer riêng, mỗi trang mới thêm vào chỉ việc tái sử dụng.</p>
+
+      <div style="text-align:center;margin-top:48px;padding:32px;background:var(--bg);border-radius:var(--radius);">
+        <p class="eyebrow" style="margin-bottom:6px;">Muốn xem sản phẩm thật?</p>
+        <h3 style="margin-bottom:16px;">Xem design system áp dụng trên trang chủ</h3>
+        <a href="index.html" class="btn btn-primary">Xem trang chủ →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Theo dõi mình tại</p>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@belinda.dinh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61593634372996" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/belinda.dinh" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@belinda.dinh" target="_blank" rel="noopener">Threads</a>
+          <a href="https://www.linkedin.com/in/belinda-dinh-b1b243393/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Belinda Dinh Creative — Email chỉ dùng để gửi tài liệu, cập nhật sản phẩm và chăm sóc bạn, không chia sẻ cho bên thứ ba.
+    </div>
+  </div>
+</footer>

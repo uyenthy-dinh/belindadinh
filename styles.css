@@ -317,6 +317,7 @@
 .case-grid{display:grid;grid-template-columns:1fr;gap:18px;}
 .case-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;}
 .case-card h3{font-size:1.1rem;}
+.case-card h3 a:hover{text-decoration:underline;}
 .case-fields{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px;border-top:1px solid var(--line);padding-top:14px;}
 @media (max-width:800px){ .case-fields{grid-template-columns:1fr 1fr;} }
 .case-fields .lbl{font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-2);margin-bottom:3px;}

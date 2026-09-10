@@ -1,0 +1,97 @@
+<title>Case Study: Web Ôn Luật — Belinda Dinh</title>
+<meta name="description" content="Cách dựng 1 web app trắc nghiệm ôn luật bằng AI, từ văn bản luật gốc tới link dùng thử công khai.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Belinda Dinh</a>
+    <ul class="nav-links">
+      <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+      <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
+      <li><a href="index.html#products">Sản phẩm</a></li>
+      <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="index.html#about">Về mình</a></li>
+    </ul>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
+  </div>
+</header>
+
+<main>
+  <section class="section page-hero">
+    <div class="container">
+      <div class="crumb"><a href="case-study.html">← Case Study</a></div>
+      <span class="badge" style="background:var(--accent);margin-bottom:14px;display:inline-block;">Case thật</span>
+      <p class="eyebrow">Case study · Web ôn tập</p>
+      <h1>Biến văn bản luật thành web trắc nghiệm ôn tập</h1>
+      <p class="lede">Từ toàn văn 2 bộ luật, dựng thành 1 web app trắc nghiệm sống — 737 câu hỏi, phủ đủ 100% điều luật, chấm điểm và giải thích căn cứ pháp lý ngay khi chọn đáp án.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="wf-meta">
+        <div class="wf-meta-card"><div class="lbl">Vấn đề giải quyết</div><div class="val">Ôn luật bằng cách đọc lại văn bản dài rất chán và dễ quên, không có cách tự kiểm tra mình đã nhớ đúng hay chưa.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Công cụ cần dùng</div><div class="val">AI viết code (Claude/ChatGPT) + Google Apps Script — miễn phí, không cần thuê hosting riêng.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Kết quả thật</div><div class="val">737 câu hỏi — 220/220 điều Bộ luật Dân sự 2015 và 517/517 điều Bộ luật Tố tụng Dân sự 2015.</div></div>
+      </div>
+
+      <div class="section-head left">
+        <p class="eyebrow">Hướng dẫn chi tiết</p>
+        <h2>Các bước thực hiện</h2>
+      </div>
+      <ol class="wf-steps">
+        <li><b>Chuẩn bị văn bản luật gốc đầy đủ.</b> Toàn văn bộ luật, có đánh số điều rõ ràng — càng đầy đủ, AI càng sinh câu hỏi bám sát và ít bỏ sót điều luật.</li>
+        <li><b>Mô tả cấu trúc app mong muốn.</b> Người dùng chọn bộ luật muốn ôn → làm bài trắc nghiệm với thứ tự câu hỏi và đáp án xáo trộn ngẫu nhiên mỗi lượt → chấm đúng/sai kèm giải thích căn cứ điều luật ngay khi chọn đáp án.</li>
+        <li><b>Để AI sinh câu hỏi bám sát từng điều luật.</b> Đặt mục tiêu rõ ràng: phủ hết 100% điều luật, không chỉ chọn ngẫu nhiên vài điều — rồi để AI viết toàn bộ code.</li>
+        <li><b>Deploy thành Web App công khai.</b> Trong Google Apps Script: Deploy → New deployment → Web app, chọn quyền truy cập "Anyone" để có 1 link dùng thử ngay, không cần hosting riêng.</li>
+        <li><b>Test thử và đối chiếu.</b> Làm thử vài lượt ngẫu nhiên, đối chiếu đáp án với văn bản gốc trước khi chia sẻ công khai.</li>
+      </ol>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Prompt mẫu</p>
+        <h2>Prompt thật đã dùng cho case này</h2>
+      </div>
+      <div class="prompt-chip" style="font-size:.95rem;padding:20px;">
+        "Đây là toàn văn [tên bộ luật]. Hãy viết giúp tôi 1 web app trắc nghiệm ôn luật: sinh câu hỏi bám sát từng điều luật (mục tiêu phủ hết các điều), mỗi câu 4 đáp án, xáo trộn ngẫu nhiên thứ tự câu hỏi và đáp án mỗi lượt làm bài, chấm đúng/sai ngay và giải thích ngắn gọn căn cứ điều luật liên quan khi chọn đáp án."
+      </div>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Kết quả đầu ra</p>
+        <h2>Bạn nhận được gì sau workflow này</h2>
+      </div>
+      <p>1 web app trắc nghiệm sống, dùng thử được ngay qua link công khai — tổng 737 câu hỏi, phủ đủ 220/220 điều Bộ luật Dân sự 2015 và 517/517 điều Bộ luật Tố tụng Dân sự 2015. Không cần tự soạn tay từng câu hỏi/đáp án, làm 1 lần và ôn lại được nhiều lần với đề random mỗi lượt.</p>
+
+      <div style="text-align:center;margin-top:48px;padding:32px;background:var(--bg);border-radius:var(--radius);">
+        <p class="eyebrow" style="margin-bottom:6px;">Muốn xem sản phẩm thật?</p>
+        <h3 style="margin-bottom:16px;">Dùng thử web ôn luật ngay</h3>
+        <a href="https://script.google.com/macros/s/AKfycbzul2zAhcje_l8JDTXZU1yeoFLzjhTmpR-qL-zZQJxB40INttYQ9bvjs1yAtOqCoDnR/exec" target="_blank" rel="noopener" class="btn btn-primary">Mở web ôn luật thật →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Theo dõi mình tại</p>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@belinda.dinh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61593634372996" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/belinda.dinh" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@belinda.dinh" target="_blank" rel="noopener">Threads</a>
+          <a href="https://www.linkedin.com/in/belinda-dinh-b1b243393/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Belinda Dinh Creative — Email chỉ dùng để gửi tài liệu, cập nhật sản phẩm và chăm sóc bạn, không chia sẻ cho bên thứ ba.
+    </div>
+  </div>
+</footer>
