@@ -34,3 +34,37 @@
 
   targets.forEach(function(el){ io.observe(el); });
 })();
+
+(function(){
+  var drops = document.querySelectorAll('.nav-drop');
+  drops.forEach(function(drop){
+    var btn = drop.querySelector('button');
+    if(!btn){ return; }
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var wasOpen = drop.classList.contains('open');
+      drops.forEach(function(d){
+        d.classList.remove('open');
+        d.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+      if(!wasOpen){
+        drop.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  document.addEventListener('click', function(){
+    drops.forEach(function(d){
+      d.classList.remove('open');
+      d.querySelector('button').setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      drops.forEach(function(d){
+        d.classList.remove('open');
+        d.querySelector('button').setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+})();
