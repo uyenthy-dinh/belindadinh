@@ -393,3 +393,87 @@
 .hero-decor .s1{top:-20px;right:22px;animation-duration:3.2s;}
 .hero-decor .s2{top:42%;right:-12px;animation-duration:4s;animation-delay:-1.2s;}
 .hero-decor .s3{bottom:-16px;left:18%;animation-duration:3.6s;animation-delay:-2s;opacity:.75;}
+
+/* ===== roadmap (lộ trình tự học) ===== */
+.roadmap-note{
+  display:flex;gap:10px;align-items:flex-start;max-width:760px;margin:0 auto 44px;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:14px 18px;font-size:.86rem;line-height:1.6;color:var(--ink-soft);
+}
+.roadmap-note b{color:var(--ink);}
+.roadmap-note a{color:var(--accent-2);font-weight:700;text-decoration:none;}
+.roadmap-note a:hover{text-decoration:underline;}
+
+.rm-timeline{position:relative;max-width:760px;margin:0 auto;}
+.rm-timeline::before{content:"";position:absolute;left:16px;top:6px;bottom:6px;width:2px;background:var(--line);}
+.rm-stage{position:relative;display:grid;grid-template-columns:34px 1fr;gap:18px;padding-bottom:28px;}
+.rm-stage:last-child{padding-bottom:0;}
+.rm-stage .level-num{position:relative;z-index:1;}
+.rm-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px 24px;}
+.rm-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 14px;}
+.rm-card h3{font-size:1.08rem;margin:0;}
+.rm-duration{font-size:.7rem;font-weight:700;color:var(--accent);background:color-mix(in srgb, var(--accent) 12%, transparent);padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.rm-goal{margin:8px 0 0;font-size:.86rem;color:var(--ink-soft);font-style:italic;}
+.rm-level-tag{display:inline-block;margin-top:10px;font-size:.7rem;font-weight:600;color:var(--accent-2);background:color-mix(in srgb, var(--accent-2) 12%, transparent);padding:3px 10px;border-radius:999px;}
+.rm-block{margin-top:16px;}
+.rm-block-label{font-size:.66rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);opacity:.8;margin-bottom:8px;}
+.rm-skills{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px;}
+.rm-skills li{font-size:.86rem;line-height:1.55;color:var(--ink);padding-left:16px;position:relative;margin:0;}
+.rm-skills li::before{content:"—";position:absolute;left:0;color:var(--accent-2);}
+.rm-resources{display:flex;flex-direction:column;gap:8px;}
+.rm-resource{display:flex;flex-direction:column;gap:5px;padding:9px 12px;background:var(--bg);border-radius:10px;}
+.rm-rtop{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.86rem;}
+.rm-rdesc{font-size:.76rem;color:var(--ink-soft);line-height:1.5;margin:0;}
+.rm-tag{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
+.rm-tag.free{color:var(--accent-2);background:color-mix(in srgb, var(--accent-2) 14%, transparent);}
+.rm-tag.paid{color:var(--accent-ink);background:var(--accent);}
+.rm-practice{margin-top:16px;display:flex;gap:10px;align-items:flex-start;background:color-mix(in srgb, var(--accent) 7%, var(--surface));border:1px dashed color-mix(in srgb, var(--accent) 45%, var(--line));border-radius:12px;padding:12px 14px;}
+.rm-practice p{margin:0;font-size:.8rem;color:var(--ink-soft);line-height:1.55;}
+.rm-practice b{color:var(--ink);}
+
+@media (max-width:560px){
+  .rm-stage{grid-template-columns:28px 1fr;gap:12px;}
+  .rm-stage .level-num{width:28px;height:28px;font-size:.8rem;}
+  .rm-timeline::before{left:13px;}
+  .rm-card{padding:18px 16px;}
+}
+
+/* ===== bundle (nguyên gói) ===== */
+.bundle-card{
+  position:relative;max-width:760px;margin:48px auto 0;
+  background:linear-gradient(160deg, var(--surface) 0%, color-mix(in srgb, var(--accent-2) 8%, var(--surface)) 100%);
+  border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:34px 28px 28px;
+}
+.bundle-ribbon{
+  position:absolute;top:-13px;left:28px;background:var(--accent-2);color:#fff;
+  font-size:.68rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  padding:6px 14px;border-radius:999px;box-shadow:0 6px 14px -6px rgba(108,92,231,.55);
+}
+.bundle-card h3{font-size:1.4rem;margin:8px 0 0;}
+.bundle-card > p{font-size:.86rem;max-width:52ch;}
+.bundle-items{margin-top:22px;display:flex;flex-direction:column;gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+.bundle-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--surface);padding:12px 16px;font-size:.86rem;}
+.bundle-item .bi-name{color:var(--ink);}
+.bundle-item .bi-name small{display:block;font-size:.72rem;color:var(--ink-soft);margin-top:2px;font-weight:400;}
+.bundle-item .bi-price{font-family:'Fraunces',serif;font-weight:600;font-size:.86rem;color:var(--ink-soft);text-decoration:line-through;white-space:nowrap;}
+.bundle-price-row{margin-top:22px;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding-top:20px;border-top:1px dashed var(--line);}
+.bundle-price-row .old{font-family:'Fraunces',serif;font-size:1rem;color:var(--ink-soft);text-decoration:line-through;}
+.bundle-price-row .new{font-family:'Fraunces',serif;font-size:2rem;font-weight:700;color:var(--accent);}
+.bundle-save{font-size:.76rem;font-weight:700;color:var(--accent-2);background:color-mix(in srgb, var(--accent-2) 14%, transparent);padding:4px 10px;border-radius:999px;}
+.price-schedule{margin-top:18px;display:flex;flex-direction:column;gap:1px;background:var(--line);border-radius:12px;overflow:hidden;border:1px solid var(--line);}
+.ps-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--surface);padding:10px 16px;font-size:.76rem;color:var(--ink-soft);}
+.ps-row .ps-price{font-family:'Fraunces',serif;font-weight:600;color:var(--ink-soft);}
+.ps-row.past{opacity:.55;}
+.ps-row.past .ps-price{text-decoration:line-through;}
+.ps-row.active{background:color-mix(in srgb, var(--accent) 10%, var(--surface));color:var(--ink);}
+.ps-row.active .ps-price{color:var(--accent);font-size:.88rem;}
+.ps-row.active .ps-label::before{content:"● ";color:var(--accent);font-size:.6rem;}
+.bundle-bonus{margin-top:18px;display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--ink-soft);line-height:1.6;background:var(--bg);border-radius:12px;padding:12px 14px;}
+.bundle-bonus b{color:var(--ink);}
+.bundle-note{margin-top:12px;font-size:.72rem;color:var(--ink-soft);opacity:.85;}
+
+@media (max-width:560px){
+  .bundle-card{padding:28px 18px 22px;}
+  .bundle-price-row .new{font-size:1.6rem;}
+}
