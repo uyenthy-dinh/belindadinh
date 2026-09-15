@@ -441,9 +441,17 @@
 .rm-skills li{font-size:.86rem;line-height:1.55;color:var(--ink);padding-left:16px;position:relative;margin:0;}
 .rm-skills li::before{content:"—";position:absolute;left:0;color:var(--accent-2);}
 .rm-resources{display:flex;flex-direction:column;gap:8px;}
-.rm-resource{display:flex;flex-direction:column;gap:5px;padding:9px 12px;background:var(--bg);border-radius:10px;}
+.rm-resource{
+  display:flex;flex-direction:column;gap:5px;padding:9px 12px;background:var(--bg);border-radius:10px;
+  text-decoration:none;color:inherit;border:1px solid transparent;
+  transition:background .15s ease, border-color .15s ease, transform .15s ease;
+}
+.rm-resource:hover{background:var(--surface);border-color:var(--accent-2);transform:translateX(2px);}
 .rm-rtop{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.86rem;}
+.rm-rtop > span:first-child{color:var(--ink);}
 .rm-rdesc{font-size:.76rem;color:var(--ink-soft);line-height:1.5;margin:0;}
+#product-mini-course,#product-template-pro,#product-automation-kit,
+#soon-club,#soon-cam-nang,#soon-calendar,#soon-hook{scroll-margin-top:84px;}
 .rm-tag{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap;}
 .rm-tag.free{color:var(--accent-2);background:color-mix(in srgb, var(--accent-2) 14%, transparent);}
 .rm-tag.paid{color:var(--accent-ink);background:var(--accent);}
