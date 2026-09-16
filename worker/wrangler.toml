@@ -4,7 +4,7 @@ compatibility_date = "2026-01-01"
 
 # Sau khi tạo KV namespace (xem SETUP.md), dán id thật vào đây thay cho REPLACE_ME.
 kv_namespaces = [
-  { binding = "QUESTIONS", id = "REPLACE_ME" }
+  { binding = "QUESTIONS", id = "9f69e714b1a84618998942cac78b8dfd" }
 ]
 
 # Các giá trị bí mật (token, API key) KHÔNG khai báo ở đây.
