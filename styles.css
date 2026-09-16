@@ -170,6 +170,10 @@
     background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
     padding:26px;display:flex;flex-direction:column;gap:14px;
   }
+  .product-card .pas-hook{
+    font-size:.84rem;line-height:1.6;color:var(--ink-soft);margin:0;
+    border-left:3px solid var(--accent-2);padding-left:12px;
+  }
   .product-card .price{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--accent);margin:0;}
   .product-card .price small{font-family:'Manrope',sans-serif;font-size:.68rem;color:var(--ink-soft);font-weight:700;letter-spacing:.06em;text-transform:uppercase;}
   .product-card .old-price{font-family:'Manrope',sans-serif;font-size:.95rem;font-weight:600;color:var(--ink-soft);text-decoration:line-through;margin-right:8px;}
