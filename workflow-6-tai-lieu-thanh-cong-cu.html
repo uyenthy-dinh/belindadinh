@@ -1,0 +1,105 @@
+<title>Biến Tài Liệu Thành Công Cụ — Belinda Dinh</title>
+<meta name="description" content="Workflow dùng AI agent biến dữ liệu/ghi chú rời rạc thành 1 công cụ nội bộ dùng được thật, không cần thuê dev hay biết database.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="motion.js" defer></script>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Belinda Dinh</a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Học AI <span class="nav-caret">▾</span></button>
+        <ul class="nav-drop-menu">
+          <li><a href="index.html#roadmap">Lộ trình tự học</a></li>
+          <li><a href="khoa-hoc-ai.html">Khoá học AI</a></li>
+          <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+          <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
+          <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#products">Sản phẩm</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="index.html#about">Về mình</a></li>
+    </ul>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
+  </div>
+</header>
+
+<main>
+  <section class="section page-hero">
+    <div class="container">
+      <div class="crumb"><a href="thu-vien-workflow.html">← Thư viện Workflow</a></div>
+      <p class="eyebrow">Workflow · Trung cấp · AI Agent</p>
+      <h1>Biến tài liệu thành công cụ</h1>
+      <p class="lede">Ghi chú, bảng Excel, tài liệu rời rạc mà lần nào dùng cũng phải lục tìm, copy dán thủ công? AI agent có thể biến chính dữ liệu đó thành 1 công cụ nội bộ chạy được, tra cứu bằng vài giây.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="wf-meta">
+        <div class="wf-meta-card"><div class="lbl">Vấn đề giải quyết</div><div class="val">Dữ liệu/tài liệu quan trọng nằm rải rác, mỗi lần cần tra cứu lại phải mở nhiều file, tìm thủ công, dễ sai sót.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Công cụ cần dùng</div><div class="val">1 AI coding agent (Claude Code, Codex, hoặc Antigravity CLI) để dựng công cụ, cộng dữ liệu gốc từ Google Sheet, Notion, hoặc file Excel bạn đang có.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Thời gian thực hiện</div><div class="val">1-2 buổi tuỳ độ phức tạp của công cụ</div></div>
+      </div>
+
+      <div class="section-head left">
+        <p class="eyebrow">Sơ đồ</p>
+        <h2>Các bước thực hiện</h2>
+      </div>
+      <ol class="wf-steps">
+        <li><b>Gom dữ liệu gốc về 1 chỗ.</b> Google Sheet, Excel, ghi chú Notion đều được, miễn là agent đọc lại được.</li>
+        <li><b>Mô tả công cụ bạn muốn.</b> Nhập gì vào, ra kết quả gì, ai dùng, dùng để làm gì mỗi ngày. Càng cụ thể, agent dựng càng sát nhu cầu.</li>
+        <li><b>Để agent đề xuất cấu trúc trước khi code.</b> Mấy màn hình, mấy chức năng chính, xác nhận hướng đi trước khi agent bắt tay dựng thật.</li>
+        <li><b>Agent tự viết, tự chạy thử, tự sửa lỗi.</b> Bạn không cần hiểu code đang chạy gì, chỉ cần xác nhận kết quả đúng hướng.</li>
+        <li><b>Test bằng chính dữ liệu thật của bạn.</b> Không phải dữ liệu mẫu, để thấy ngay công cụ có dùng được trong công việc thật hay không.</li>
+        <li><b>Đóng gói lại để dùng lâu dài.</b> Yêu cầu agent xuất ra link dùng ngay, hoặc file chạy offline, để lần sau không phải dựng lại từ đầu.</li>
+      </ol>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Prompt mẫu</p>
+        <h2>Xem trước yêu cầu dùng trong workflow này</h2>
+      </div>
+      <div class="prompt-chip" style="font-size:.95rem;padding:20px;">
+        "Đây là bảng theo dõi khách hàng của tôi [dán hoặc mô tả dữ liệu]. Tôi muốn 1 công cụ đơn giản: nhập tên khách, tự tra và hiện lịch sử mua hàng, tổng chi tiêu, lần mua gần nhất. Hãy dựng thử cho tôi xem ngay."
+      </div>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Kết quả đầu ra</p>
+        <h2>Bạn nhận được gì sau workflow này</h2>
+      </div>
+      <p>1 công cụ nội bộ chạy được từ chính dữ liệu của bạn, tra cứu bằng vài giây thay vì lục tìm thủ công. Không cần thuê dev, không cần biết Excel nâng cao hay database là gì, chỉ cần biết mình muốn công cụ làm gì.</p>
+
+      <div style="text-align:center;margin-top:48px;padding:32px;background:var(--bg);border-radius:var(--radius);">
+        <p class="eyebrow" style="margin-bottom:6px;">Muốn AI tự nghiên cứu và viết luôn nội dung?</p>
+        <h3 style="margin-bottom:16px;">Thử workflow "AI Agent viết báo cáo nghiên cứu"</h3>
+        <a href="workflow-7-agent-viet-bao-cao.html" class="btn btn-primary">Xem workflow tiếp theo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Theo dõi mình tại</p>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@belinda.dinh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61593634372996" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/belinda.dinh" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@belinda.dinh" target="_blank" rel="noopener">Threads</a>
+          <a href="https://www.linkedin.com/in/belinda-dinh-b1b243393/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Belinda Dinh Creative — Email chỉ dùng để gửi tài liệu, cập nhật sản phẩm và chăm sóc bạn, không chia sẻ cho bên thứ ba.
+    </div>
+  </div>
+</footer>

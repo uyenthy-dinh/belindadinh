@@ -1,0 +1,104 @@
+<title>Tự Động Hoá Việc Đầu Tiên Với AI Agent — Belinda Dinh</title>
+<meta name="description" content="Workflow dùng AI agent (Claude Code/Cowork, Codex, Antigravity CLI) tự làm 1 việc lặp lại thay bạn, xuất kết quả thật, không cần biết code.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="motion.js" defer></script>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Belinda Dinh</a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Học AI <span class="nav-caret">▾</span></button>
+        <ul class="nav-drop-menu">
+          <li><a href="index.html#roadmap">Lộ trình tự học</a></li>
+          <li><a href="khoa-hoc-ai.html">Khoá học AI</a></li>
+          <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+          <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
+          <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#products">Sản phẩm</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="index.html#about">Về mình</a></li>
+    </ul>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
+  </div>
+</header>
+
+<main>
+  <section class="section page-hero">
+    <div class="container">
+      <div class="crumb"><a href="thu-vien-workflow.html">← Thư viện Workflow</a></div>
+      <p class="eyebrow">Workflow · Cơ bản · AI Agent</p>
+      <h1>Tự động hoá việc đầu tiên với AI Agent</h1>
+      <p class="lede">Khác với hỏi đáp thông thường, AI agent có thể tự thực hiện cả chuỗi hành động thay bạn, không chỉ trả lời. Bài này là bước đầu tiên để bạn thấy điều đó bằng 1 việc thật, không phải lý thuyết.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="wf-meta">
+        <div class="wf-meta-card"><div class="lbl">Vấn đề giải quyết</div><div class="val">Việc lặp lại mỗi ngày như đọc tin, tóm tắt email, tổng hợp báo cáo, tốn thời gian nhưng bạn nghĩ phải biết code mới "tự động hoá" được.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Công cụ cần dùng</div><div class="val">1 AI agent bất kỳ: Claude Code/Claude Cowork (Anthropic), Codex (ChatGPT/OpenAI), hoặc Antigravity CLI (Gemini/Google). Cách làm việc tương tự nhau, chọn theo hệ sinh thái bạn đang dùng.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Thời gian thực hiện</div><div class="val">15-30 phút cho lần chạy đầu tiên</div></div>
+      </div>
+
+      <div class="section-head left">
+        <p class="eyebrow">Sơ đồ</p>
+        <h2>Các bước thực hiện</h2>
+      </div>
+      <ol class="wf-steps">
+        <li><b>Chọn đúng 1 việc nhỏ, lặp lại thường xuyên.</b> Lần đầu đừng chọn việc quá phức tạp. Ví dụ: mỗi sáng đọc 5-10 tin tức/email rồi tóm tắt lại theo đúng nhu cầu của bạn.</li>
+        <li><b>Mô tả việc bằng lời thường, không cần thuật ngữ kỹ thuật.</b> Nói rõ: dữ liệu lấy từ đâu, muốn ra kết quả dạng gì, ai sẽ đọc kết quả đó.</li>
+        <li><b>Để agent tự hỏi lại nếu thiếu thông tin.</b> Đây là khác biệt lớn nhất so với chatbot thường: agent chủ động hỏi để làm đúng, thay vì đoán rồi trả lời sai.</li>
+        <li><b>Agent tự thực hiện toàn bộ, không chỉ hướng dẫn.</b> Bạn nhận về kết quả thật đã hoàn thành: bản tóm tắt, file, hay bảng dữ liệu, không phải các bước để bạn tự làm lại.</li>
+        <li><b>Duyệt kết quả và lưu lại quy trình.</b> Ưng thì lưu lại cách mô tả này, lần sau chỉ cần gọi lại đúng yêu cầu là agent tự chạy lại từ đầu.</li>
+      </ol>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Prompt mẫu</p>
+        <h2>Xem trước yêu cầu dùng trong workflow này</h2>
+      </div>
+      <div class="prompt-chip" style="font-size:.95rem;padding:20px;">
+        "Tôi muốn mỗi sáng có 1 bản tóm tắt 5 tin tức mới nhất về [chủ đề], mỗi tin 2-3 dòng, xếp theo mức độ liên quan tới công việc của tôi. Hãy tự tìm, đọc và tổng hợp lại giúp tôi ngay bây giờ, không cần hỏi lại nếu đủ thông tin."
+      </div>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Kết quả đầu ra</p>
+        <h2>Bạn nhận được gì sau workflow này</h2>
+      </div>
+      <p>1 kết quả thật, xuất ra ngay trong lần chạy đầu tiên, không phải hướng dẫn lý thuyết để bạn tự làm lại. Quan trọng hơn, bạn thấy được sự khác biệt giữa "hỏi AI 1 câu" và "giao việc cho AI agent" — đây là nền tảng cho mọi workflow nâng cao hơn sau này.</p>
+
+      <div style="text-align:center;margin-top:48px;padding:32px;background:var(--bg);border-radius:var(--radius);">
+        <p class="eyebrow" style="margin-bottom:6px;">Muốn đi xa hơn 1 việc nhỏ?</p>
+        <h3 style="margin-bottom:16px;">Thử workflow "Từ ý tưởng ra web trong 1 buổi"</h3>
+        <a href="workflow-5-y-tuong-ra-web.html" class="btn btn-primary">Xem workflow tiếp theo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Theo dõi mình tại</p>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@belinda.dinh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61593634372996" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/belinda.dinh" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@belinda.dinh" target="_blank" rel="noopener">Threads</a>
+          <a href="https://www.linkedin.com/in/belinda-dinh-b1b243393/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Belinda Dinh Creative — Email chỉ dùng để gửi tài liệu, cập nhật sản phẩm và chăm sóc bạn, không chia sẻ cho bên thứ ba.
+    </div>
+  </div>
+</footer>

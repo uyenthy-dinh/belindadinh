@@ -1,0 +1,105 @@
+<title>Từ Ý Tưởng Ra Web Trong 1 Buổi — Belinda Dinh</title>
+<meta name="description" content="Workflow dùng AI coding agent (Claude Code, Codex, Antigravity CLI) tự dựng cả trang web từ 1 ý tưởng mô tả bằng lời, không cần biết lập trình.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="motion.js" defer></script>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Belinda Dinh</a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Học AI <span class="nav-caret">▾</span></button>
+        <ul class="nav-drop-menu">
+          <li><a href="index.html#roadmap">Lộ trình tự học</a></li>
+          <li><a href="khoa-hoc-ai.html">Khoá học AI</a></li>
+          <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+          <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
+          <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#products">Sản phẩm</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="index.html#about">Về mình</a></li>
+    </ul>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
+  </div>
+</header>
+
+<main>
+  <section class="section page-hero">
+    <div class="container">
+      <div class="crumb"><a href="thu-vien-workflow.html">← Thư viện Workflow</a></div>
+      <p class="eyebrow">Workflow · Cơ bản · AI Agent</p>
+      <h1>Từ ý tưởng ra web trong 1 buổi</h1>
+      <p class="lede">Không cần thuê dev, không cần học code. Mô tả bằng lời trang bạn muốn, AI coding agent tự viết, tự chạy thử, tự sửa lỗi cho tới khi ra 1 trang web thật, có link chia sẻ được ngay.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="wf-meta">
+        <div class="wf-meta-card"><div class="lbl">Vấn đề giải quyết</div><div class="val">Có ý tưởng về 1 trang landing page, trang giới thiệu, hoặc tool nhỏ, nhưng không biết code, còn thuê dev thì chậm và tốn kém.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Công cụ cần dùng</div><div class="val">1 AI coding agent: Claude Code (Anthropic), Codex (ChatGPT/OpenAI), hoặc Antigravity CLI (Gemini/Google). Đây là loại agent viết code trực tiếp, khác với chatbot chỉ trả lời trong khung chat.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Thời gian thực hiện</div><div class="val">1 buổi (2-4 giờ) cho bản đầu tiên chạy được thật</div></div>
+      </div>
+
+      <div class="section-head left">
+        <p class="eyebrow">Sơ đồ</p>
+        <h2>Các bước thực hiện</h2>
+      </div>
+      <ol class="wf-steps">
+        <li><b>Viết ý tưởng ra 3-5 câu.</b> Trang này để làm gì, ai sẽ xem, cần những phần nào (tiêu đề, mô tả, nút liên hệ...).</li>
+        <li><b>Mở đúng loại agent viết code.</b> Khác với chat thường, agent này tạo được file, chạy thử ngay trên máy, và tự sửa khi có lỗi.</li>
+        <li><b>Để agent tự dựng cấu trúc trang trước.</b> Mô tả từng phần bạn muốn thấy, đừng cố kiểm soát từng dòng code, cứ nói bằng ngôn ngữ thường.</li>
+        <li><b>Xem bản chạy thử ngay trên trình duyệt.</b> Agent tự mở preview cho bạn xem trước khi hoàn thiện, không phải chờ đến cuối mới biết ra sao.</li>
+        <li><b>Yêu cầu chỉnh từng chi tiết bằng lời.</b> Màu sắc, chữ, bố cục, cứ nói lại là agent sửa ngay, lặp lại tới khi ưng.</li>
+        <li><b>Agent tự đưa trang lên để chia sẻ.</b> Bạn nhận về 1 đường link dùng ngay, không cần biết "deploy" hay "hosting" là gì.</li>
+      </ol>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Prompt mẫu</p>
+        <h2>Xem trước yêu cầu dùng trong workflow này</h2>
+      </div>
+      <div class="prompt-chip" style="font-size:.95rem;padding:20px;">
+        "Tôi muốn 1 trang landing page giới thiệu [sản phẩm/dịch vụ]: có tiêu đề, mô tả ngắn, 3 điểm nổi bật, và 1 nút liên hệ. Màu sắc theo tông [mô tả màu thương hiệu]. Hãy tự dựng và cho tôi xem thử ngay."
+      </div>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Kết quả đầu ra</p>
+        <h2>Bạn nhận được gì sau workflow này</h2>
+      </div>
+      <p>1 trang web thật, chạy được, có link để chia sẻ ngay trong buổi làm việc đầu tiên. Không phải bản demo hay file thiết kế, mà là trang bạn có thể gửi cho khách hàng xem ngay hôm đó, chính website bạn đang đọc cũng được dựng theo đúng cách này.</p>
+
+      <div style="text-align:center;margin-top:48px;padding:32px;background:var(--bg);border-radius:var(--radius);">
+        <p class="eyebrow" style="margin-bottom:6px;">Đã quen với agent, muốn làm việc lớn hơn?</p>
+        <h3 style="margin-bottom:16px;">Thử workflow "Biến tài liệu thành công cụ"</h3>
+        <a href="workflow-6-tai-lieu-thanh-cong-cu.html" class="btn btn-primary">Xem workflow tiếp theo</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Theo dõi mình tại</p>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@belinda.dinh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61593634372996" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/belinda.dinh" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@belinda.dinh" target="_blank" rel="noopener">Threads</a>
+          <a href="https://www.linkedin.com/in/belinda-dinh-b1b243393/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Belinda Dinh Creative — Email chỉ dùng để gửi tài liệu, cập nhật sản phẩm và chăm sóc bạn, không chia sẻ cho bên thứ ba.
+    </div>
+  </div>
+</footer>

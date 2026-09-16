@@ -1,0 +1,105 @@
+<title>AI Agent Viết Báo Cáo Nghiên Cứu — Belinda Dinh</title>
+<meta name="description" content="Workflow dùng AI agent tự tìm kiếm, tổng hợp và trình bày thành 1 báo cáo nghiên cứu hoàn chỉnh, có số liệu thật, chỉ trong 30-60 phút.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+<script src="motion.js" defer></script>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">Belinda Dinh</a>
+    <ul class="nav-links">
+      <li class="nav-drop">
+        <button type="button" aria-haspopup="true" aria-expanded="false">Học AI <span class="nav-caret">▾</span></button>
+        <ul class="nav-drop-menu">
+          <li><a href="index.html#roadmap">Lộ trình tự học</a></li>
+          <li><a href="khoa-hoc-ai.html">Khoá học AI</a></li>
+          <li><a href="thu-vien-workflow.html">Thư viện Workflow</a></li>
+          <li><a href="cong-cu-ai.html">Công cụ AI</a></li>
+          <li><a href="bao-cao-ai-2026.html">Báo cáo AI</a></li>
+        </ul>
+      </li>
+      <li><a href="index.html#products">Sản phẩm</a></li>
+      <li><a href="case-study.html">Case Study</a></li>
+      <li><a href="index.html#about">Về mình</a></li>
+    </ul>
+    <a class="btn btn-primary" href="workflow-finder.html" style="padding:10px 20px;font-size:.85rem;">Tìm Workflow phù hợp</a>
+  </div>
+</header>
+
+<main>
+  <section class="section page-hero">
+    <div class="container">
+      <div class="crumb"><a href="thu-vien-workflow.html">← Thư viện Workflow</a></div>
+      <p class="eyebrow">Workflow · Trung cấp · AI Agent</p>
+      <h1>AI Agent viết báo cáo nghiên cứu</h1>
+      <p class="lede">Muốn có 1 báo cáo thị trường, đối thủ, hay xu hướng ngành, nhưng tự nghiên cứu tốn hàng giờ tìm và tổng hợp nguồn? AI agent có thể tự tìm kiếm thật, tổng hợp và trình bày thành 1 trang hoàn chỉnh.</p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="container">
+      <div class="wf-meta">
+        <div class="wf-meta-card"><div class="lbl">Vấn đề giải quyết</div><div class="val">Cần báo cáo/bài viết chuyên sâu có số liệu thật, nhưng tự tìm và đọc nhiều nguồn, rồi tổng hợp lại, tốn nhiều giờ mỗi lần.</div></div>
+        <div class="wf-meta-card"><div class="lbl">Công cụ cần dùng</div><div class="val">1 AI agent có khả năng tìm kiếm web thật: Claude Cowork/Claude Code (Anthropic), Codex (ChatGPT/OpenAI), hoặc Antigravity CLI (Gemini/Google).</div></div>
+        <div class="wf-meta-card"><div class="lbl">Thời gian thực hiện</div><div class="val">30-60 phút cho 1 báo cáo hoàn chỉnh, trình bày đẹp</div></div>
+      </div>
+
+      <div class="section-head left">
+        <p class="eyebrow">Sơ đồ</p>
+        <h2>Các bước thực hiện</h2>
+      </div>
+      <ol class="wf-steps">
+        <li><b>Xác định chủ đề và câu hỏi chính.</b> Càng cụ thể càng tốt, "xu hướng AI 2026" quá rộng, "người dùng AI hiện cần gì nhất để bắt đầu" mới đủ hẹp để agent đào sâu.</li>
+        <li><b>Yêu cầu agent tự tìm kiếm nhiều nguồn thật.</b> Không để agent chỉ trả lời từ trí nhớ có sẵn, mà phải tự tra cứu thông tin mới, có trích nguồn rõ ràng.</li>
+        <li><b>Để agent tổng hợp thành các phần rõ ràng.</b> Bức tranh tổng quan, các xu hướng chính kèm số liệu, và khuyến nghị hành động cụ thể.</li>
+        <li><b>Yêu cầu trình bày lại thành 1 trang đẹp.</b> Thay vì chỉ là văn bản thuần, agent có thể dựng luôn thành trang có biểu đồ, số liệu nổi bật, dễ đọc và dễ chia sẻ.</li>
+        <li><b>Kiểm tra lại nguồn trích dẫn.</b> Đọc lướt qua các nguồn agent đưa ra, chỉnh sửa góc nhìn nếu có chỗ chưa sát với thực tế bạn biết.</li>
+        <li><b>Lưu lại để dùng nhiều lần.</b> Xuất thành file hoặc trang web, dùng lại khi cần thuyết trình, gửi khách hàng, hoặc làm nội dung.</li>
+      </ol>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Prompt mẫu</p>
+        <h2>Xem trước yêu cầu dùng trong workflow này</h2>
+      </div>
+      <div class="prompt-chip" style="font-size:.95rem;padding:20px;">
+        "Nghiên cứu thị trường [chủ đề] hiện tại, tìm số liệu thật từ nhiều nguồn uy tín, tổng hợp thành báo cáo có: bức tranh tổng quan, 3-4 xu hướng chính kèm số liệu, và khuyến nghị hành động. Trình bày thành 1 trang đẹp, dễ đọc, có trích nguồn rõ ràng."
+      </div>
+
+      <div class="section-head left" style="margin-top:48px;">
+        <p class="eyebrow">Kết quả đầu ra</p>
+        <h2>Bạn nhận được gì sau workflow này</h2>
+      </div>
+      <p>1 báo cáo có số liệu thật, trình bày chuyên nghiệp, đúng như trang <a href="bao-cao-ai-2026.html">Báo cáo AI 2026</a> đang có trên web này, vốn cũng được làm ra theo chính workflow này.</p>
+
+      <div style="text-align:center;margin-top:48px;padding:32px;background:var(--bg);border-radius:var(--radius);">
+        <p class="eyebrow" style="margin-bottom:6px;">Xem báo cáo được làm từ chính workflow này</p>
+        <h3 style="margin-bottom:16px;">Báo Cáo AI 2026 — nghiên cứu thị trường thật</h3>
+        <a href="bao-cao-ai-2026.html" class="btn btn-primary">Xem báo cáo mẫu</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Theo dõi mình tại</p>
+        <div class="footer-links">
+          <a href="https://www.tiktok.com/@belinda.dinh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://www.facebook.com/profile.php?id=61593634372996" target="_blank" rel="noopener">Facebook</a>
+          <a href="https://www.instagram.com/belinda.dinh" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.threads.com/@belinda.dinh" target="_blank" rel="noopener">Threads</a>
+          <a href="https://www.linkedin.com/in/belinda-dinh-b1b243393/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#C9BFD1;">Liên hệ</p>
+        <a href="mailto:belindadinh1421@gmail.com" style="font-weight:700;">✉️ Gửi email cho Belinda</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Belinda Dinh Creative — Email chỉ dùng để gửi tài liệu, cập nhật sản phẩm và chăm sóc bạn, không chia sẻ cho bên thứ ba.
+    </div>
+  </div>
+</footer>
