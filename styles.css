@@ -530,3 +530,20 @@
   .bundle-card{padding:28px 18px 22px;}
   .bundle-price-row .new{font-size:1.6rem;}
 }
+
+/* ===== ask form (hỏi đáp) ===== */
+.ask-form{display:flex;flex-direction:column;gap:18px;}
+.ask-field{display:flex;flex-direction:column;gap:6px;}
+.ask-field label{font-size:.78rem;font-weight:700;color:var(--ink-soft);letter-spacing:.02em;}
+.ask-field input,.ask-field textarea{
+  font-family:'Manrope',sans-serif;font-size:.95rem;color:var(--ink);
+  background:var(--bg);border:1.5px solid var(--line);border-radius:12px;
+  padding:12px 14px;outline:none;transition:border-color .15s ease;resize:vertical;
+}
+.ask-field input:focus,.ask-field textarea:focus{border-color:var(--accent-2);}
+.ask-field textarea{min-height:140px;font-family:inherit;line-height:1.5;}
+.ask-status{font-size:.86rem;padding:12px 14px;border-radius:10px;display:none;}
+.ask-status.show{display:block;}
+.ask-status.ok{background:color-mix(in srgb, var(--accent-2) 12%, transparent);color:var(--accent-2);}
+.ask-status.err{background:color-mix(in srgb, #E94E4E 12%, transparent);color:#C43A3A;}
+.ask-note{font-size:.78rem;color:var(--ink-soft);opacity:.85;}

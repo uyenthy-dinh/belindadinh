@@ -1,0 +1,15 @@
+name = "belinda-hoi-dap"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Sau khi tạo KV namespace (xem SETUP.md), dán id thật vào đây thay cho REPLACE_ME.
+kv_namespaces = [
+  { binding = "QUESTIONS", id = "REPLACE_ME" }
+]
+
+# Các giá trị bí mật (token, API key) KHÔNG khai báo ở đây.
+# Dùng lệnh `wrangler secret put TEN_BIEN` để nhập riêng, xem SETUP.md.
+
+# Cloudflare Workers AI (miễn phí trong hạn mức hàng ngày) — dùng để soạn nháp câu trả lời.
+[ai]
+binding = "AI"
