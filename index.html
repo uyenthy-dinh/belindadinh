@@ -531,6 +531,30 @@
   </div>
 </footer>
 
+<div class="ask-widget" id="askWidget">
+  <div class="ask-widget-panel" id="askWidgetPanel">
+    <div class="ask-widget-header">
+      <p class="ask-widget-eyebrow">🤖 Trợ lý AI dành riêng cho bạn</p>
+      <button type="button" class="ask-widget-close" id="askWidgetClose" aria-label="Đóng">✕</button>
+    </div>
+    <p class="ask-widget-note">Đặt câu hỏi bạn thắc mắc về AI ngay tại đây, Belinda sẽ giải đáp.</p>
+    <form class="ask-form" id="askWidgetForm">
+      <div class="ask-field">
+        <input type="text" id="awName" name="name" required maxlength="100" placeholder="Tên của bạn">
+      </div>
+      <div class="ask-field">
+        <input type="email" id="awEmail" name="email" required maxlength="200" placeholder="Email nhận câu trả lời">
+      </div>
+      <div class="ask-field">
+        <textarea id="awQuestion" name="question" required maxlength="2000" placeholder="Câu hỏi của bạn..."></textarea>
+      </div>
+      <div class="ask-status" id="awStatus"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="awSubmit">Gửi câu hỏi</button>
+    </form>
+  </div>
+  <button type="button" class="ask-widget-bubble" id="askWidgetBubble" aria-label="Mở Trợ lý AI">💬</button>
+</div>
+
 <div id="toast"></div>
 
 <script>
@@ -682,5 +706,77 @@ TikTok: @belinda.dinh · Facebook: Belinda Dinh AI & Creative
     }
     downloadViaBrowser(filename, STARTER_KIT);
     showToast('Đã lưu file thành công!');
+  });
+</script>
+
+<script>
+  const ASK_WORKER_URL = "https://belinda-hoi-dap.belinda-dinh.workers.dev";
+
+  const askWidget = document.getElementById('askWidget');
+  const askPanel = document.getElementById('askWidgetPanel');
+  const askBubble = document.getElementById('askWidgetBubble');
+  const askClose = document.getElementById('askWidgetClose');
+  const askForm = document.getElementById('askWidgetForm');
+  const askStatus = document.getElementById('awStatus');
+  const askSubmit = document.getElementById('awSubmit');
+
+  function openAskWidget() {
+    askPanel.classList.add('open');
+    askBubble.setAttribute('hidden', '');
+  }
+  function closeAskWidget() {
+    askPanel.classList.remove('open');
+    askBubble.removeAttribute('hidden');
+    sessionStorage.setItem('askWidgetDismissed', '1');
+  }
+
+  askBubble.addEventListener('click', openAskWidget);
+  askClose.addEventListener('click', closeAskWidget);
+
+  if (!sessionStorage.getItem('askWidgetDismissed')) {
+    setTimeout(openAskWidget, 1800);
+  } else {
+    askBubble.removeAttribute('hidden');
+  }
+
+  function showAskStatus(msg, ok) {
+    askStatus.textContent = msg;
+    askStatus.className = 'ask-status show ' + (ok ? 'ok' : 'err');
+  }
+
+  askForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('awName').value.trim();
+    const email = document.getElementById('awEmail').value.trim();
+    const question = document.getElementById('awQuestion').value.trim();
+
+    if (!name || !email || question.length < 5) {
+      showAskStatus('Vui lòng điền đủ tên, email và câu hỏi (ít nhất vài chữ).', false);
+      return;
+    }
+
+    askSubmit.disabled = true;
+    askSubmit.textContent = 'Đang gửi...';
+
+    try {
+      const res = await fetch(ASK_WORKER_URL + '/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, question }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showAskStatus(data.message || 'Đã gửi câu hỏi thành công!', true);
+        askForm.reset();
+      } else {
+        showAskStatus(data.error || 'Có lỗi xảy ra, thử lại sau nhé.', false);
+      }
+    } catch (err) {
+      showAskStatus('Không kết nối được, kiểm tra lại mạng và thử lại.', false);
+    } finally {
+      askSubmit.disabled = false;
+      askSubmit.textContent = 'Gửi câu hỏi';
+    }
   });
 </script>
