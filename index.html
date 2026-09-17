@@ -127,7 +127,7 @@
           <div class="form-card">
             <h3>Nhận trọn bộ qua email</h3>
             <p style="font-size:.88rem;">Mở form (chỉ mất 15 giây) để nhận file đầy đủ + được thêm vào danh sách nhận prompt/template mới hàng tuần.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLcJ2PZZUkCUJufo9dCo2L5DdjUjFSEYGQ3RWmkrbarcuhlg/viewform" target="_blank" rel="noopener" class="btn btn-primary btn-block">📋 Mở form nhận qua email</a>
+            <button type="button" class="btn btn-primary btn-block open-signup" data-resource="starter">📋 Đăng ký email để nhận file</button>
             <div class="divider-or">hoặc</div>
             <button class="btn btn-ghost btn-block" id="downloadBtn">⬇ Tải ngay bản xem trước (.txt)</button>
             <p class="privacy-note">Email của bạn dùng để: (1) gửi tài liệu miễn phí này, (2) báo khi có prompt/template mới, (3) thỉnh thoảng gợi ý sản phẩm/khoá học phù hợp. Không dùng vào mục đích khác, không spam, huỷ đăng ký bất cứ lúc nào.</p>
@@ -156,7 +156,7 @@
           <div class="form-card">
             <h3>Nhận trọn bộ 99 mẫu (PDF)</h3>
             <p style="font-size:.88rem;">Đăng ký email để tự động nhận file trong hộp thư — dùng chung 1 form với Starter Kit, đăng ký 1 lần là nhận được mọi tài liệu miễn phí mới.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdLcJ2PZZUkCUJufo9dCo2L5DdjUjFSEYGQ3RWmkrbarcuhlg/viewform" target="_blank" rel="noopener" class="btn btn-primary btn-block">📋 Đăng ký email để nhận file</a>
+            <button type="button" class="btn btn-primary btn-block open-signup" data-resource="99prompt">📋 Đăng ký email để nhận file</button>
             <div class="divider-or">hoặc</div>
             <a href="files/99-Mau-Prompt-ChatGPT-BelindaDinh.pdf" download class="btn btn-ghost btn-block">⬇ Tải file PDF ngay</a>
             <p class="privacy-note">Email của bạn dùng để: (1) gửi tài liệu miễn phí này, (2) báo khi có prompt/template mới, (3) thỉnh thoảng gợi ý sản phẩm/khoá học phù hợp. Không dùng vào mục đích khác, không spam, huỷ đăng ký bất cứ lúc nào.</p>
@@ -584,6 +584,27 @@
   </div>
 </div>
 
+<div class="ask-modal-backdrop" id="signupModalBackdrop">
+  <div class="ask-modal" id="signupModal">
+    <div class="ask-widget-header">
+      <p class="ask-widget-eyebrow" id="signupTitle">📋 Nhận tài liệu miễn phí</p>
+      <button type="button" class="ask-widget-close" id="signupClose" aria-label="Đóng">✕</button>
+    </div>
+    <p class="ask-widget-note" id="signupNote">Điền thông tin để nhận file qua email.</p>
+    <form class="ask-form" id="signupForm">
+      <div class="ask-field">
+        <input type="text" id="sgName" name="name" required maxlength="100" placeholder="Họ và tên">
+      </div>
+      <div class="ask-field">
+        <input type="email" id="sgEmail" name="email" required maxlength="200" placeholder="Email nhận file">
+      </div>
+      <div class="ask-status" id="sgStatus"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="sgSubmit">Đăng ký nhận file</button>
+      <p class="privacy-note" style="margin-top:2px;">Email của bạn chỉ dùng để gửi tài liệu và thông báo prompt/template mới, không spam, huỷ đăng ký bất cứ lúc nào.</p>
+    </form>
+  </div>
+</div>
+
 <div id="toast"></div>
 
 <script>
@@ -808,6 +829,106 @@ TikTok: @belinda.dinh · Facebook: Belinda Dinh AI & Creative
     } finally {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Gửi câu hỏi';
+    }
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const GFORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSdLcJ2PZZUkCUJufo9dCo2L5DdjUjFSEYGQ3RWmkrbarcuhlg/formResponse';
+  const ENTRY_NAME = 'entry.217484424';
+
+  const RESOURCES = {
+    starter: {
+      title: '📋 Nhận AI Content Starter Kit',
+      note: 'Điền thông tin để nhận file AI Content Starter Kit (khung 5 cấp độ dùng AI + 50 prompt cho content creator) qua email.',
+      success: 'Cảm ơn bạn! File AI Content Starter Kit đang được gửi tới email của bạn.',
+      pdfPath: 'files/AI-Content-Starter-Kit-BelindaDinh.pdf',
+    },
+    '99prompt': {
+      title: '📋 Nhận 99 Mẫu Prompt ChatGPT',
+      note: 'Điền thông tin để nhận file 99 Mẫu Prompt ChatGPT (9 nhóm chủ đề, dùng ngay cho content & marketing) qua email.',
+      success: 'Cảm ơn bạn! File 99 Mẫu Prompt ChatGPT đang được gửi tới email của bạn.',
+      pdfPath: 'files/99-Mau-Prompt-ChatGPT-BelindaDinh.pdf',
+    },
+  };
+
+  const backdrop = document.getElementById('signupModalBackdrop');
+  const modal = document.getElementById('signupModal');
+  const titleEl = document.getElementById('signupTitle');
+  const noteEl = document.getElementById('signupNote');
+  const closeBtn = document.getElementById('signupClose');
+  const form = document.getElementById('signupForm');
+  const statusEl = document.getElementById('sgStatus');
+  const submitBtn = document.getElementById('sgSubmit');
+
+  let currentResource = 'starter';
+
+  function openSignup(resourceKey){
+    currentResource = RESOURCES[resourceKey] ? resourceKey : 'starter';
+    const r = RESOURCES[currentResource];
+    titleEl.textContent = r.title;
+    noteEl.textContent = r.note;
+    statusEl.className = 'ask-status';
+    statusEl.textContent = '';
+    form.reset();
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Đăng ký nhận file';
+    backdrop.classList.add('open');
+  }
+  function closeSignup(){
+    backdrop.classList.remove('open');
+  }
+
+  document.querySelectorAll('.open-signup').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openSignup(btn.dataset.resource);
+    });
+  });
+  closeBtn.addEventListener('click', closeSignup);
+  backdrop.addEventListener('click', function(e){ if (e.target === backdrop) closeSignup(); });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeSignup();
+  });
+
+  function showStatus(msg, ok){
+    statusEl.textContent = msg;
+    statusEl.className = 'ask-status show ' + (ok ? 'ok' : 'err');
+  }
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const name = document.getElementById('sgName').value.trim();
+    const email = document.getElementById('sgEmail').value.trim();
+    if (!name || !email){
+      showStatus('Vui lòng điền đủ họ tên và email.', false);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Đang gửi...';
+
+    const body = new URLSearchParams();
+    body.set(ENTRY_NAME, name);
+    body.set('emailAddress', email);
+
+    try {
+      await fetch(GFORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString(),
+      });
+      showStatus(RESOURCES[currentResource].success, true);
+      showToast('Đăng ký thành công!');
+      form.reset();
+      setTimeout(closeSignup, 2200);
+    } catch (err) {
+      showStatus('Không kết nối được, kiểm tra lại mạng và thử lại — hoặc bấm "Tải ngay" để lấy file trực tiếp.', false);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Đăng ký nhận file';
     }
   });
 })();
