@@ -551,12 +551,15 @@
 /* ===== ask widget (popup Trợ lý AI, mọi trang) ===== */
 .ask-widget-bubble{
   position:fixed;right:24px;bottom:24px;z-index:200;
-  width:60px;height:60px;border-radius:50%;border:none;cursor:pointer;
-  background:var(--accent);color:#fff;font-size:26px;box-shadow:var(--shadow);
-  display:flex;align-items:center;justify-content:center;
+  border:none;cursor:pointer;border-radius:999px;
+  background:var(--accent);color:#fff;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:8px;
+  padding:14px 20px 14px 16px;
+  font-family:'Manrope',sans-serif;font-weight:700;font-size:.92rem;white-space:nowrap;
   transition:transform .2s ease;
 }
-.ask-widget-bubble:hover{transform:scale(1.06);}
+.ask-widget-bubble .ask-bubble-icon{font-size:20px;line-height:1;}
+.ask-widget-bubble:hover{transform:scale(1.04);}
 .ask-widget-bubble[hidden]{display:none;}
 
 .ask-modal-backdrop{
