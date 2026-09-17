@@ -531,8 +531,9 @@
   </div>
 </footer>
 
-<div class="ask-widget" id="askWidget">
-  <div class="ask-widget-panel" id="askWidgetPanel">
+<button type="button" class="ask-widget-bubble" id="askWidgetBubble" aria-label="Mở Trợ lý AI">💬</button>
+<div class="ask-modal-backdrop" id="askModalBackdrop">
+  <div class="ask-modal" id="askModal">
     <div class="ask-widget-header">
       <p class="ask-widget-eyebrow">🤖 Trợ lý AI dành riêng cho bạn</p>
       <button type="button" class="ask-widget-close" id="askWidgetClose" aria-label="Đóng">✕</button>
@@ -552,7 +553,6 @@
       <button type="submit" class="btn btn-primary btn-block" id="awSubmit">Gửi câu hỏi</button>
     </form>
   </div>
-  <button type="button" class="ask-widget-bubble" id="askWidgetBubble" aria-label="Mở Trợ lý AI">💬</button>
 </div>
 
 <div id="toast"></div>
@@ -710,41 +710,43 @@ TikTok: @belinda.dinh · Facebook: Belinda Dinh AI & Creative
 </script>
 
 <script>
+(function(){
   const ASK_WORKER_URL = "https://belinda-hoi-dap.belinda-dinh.workers.dev";
 
-  const askWidget = document.getElementById('askWidget');
-  const askPanel = document.getElementById('askWidgetPanel');
-  const askBubble = document.getElementById('askWidgetBubble');
-  const askClose = document.getElementById('askWidgetClose');
-  const askForm = document.getElementById('askWidgetForm');
-  const askStatus = document.getElementById('awStatus');
-  const askSubmit = document.getElementById('awSubmit');
+  const backdrop = document.getElementById('askModalBackdrop');
+  const bubble = document.getElementById('askWidgetBubble');
+  const closeBtn = document.getElementById('askWidgetClose');
+  const form = document.getElementById('askWidgetForm');
+  const statusEl = document.getElementById('awStatus');
+  const submitBtn = document.getElementById('awSubmit');
 
-  function openAskWidget() {
-    askPanel.classList.add('open');
-    askBubble.setAttribute('hidden', '');
+  function openAsk() {
+    backdrop.classList.add('open');
+    bubble.setAttribute('hidden', '');
   }
-  function closeAskWidget() {
-    askPanel.classList.remove('open');
-    askBubble.removeAttribute('hidden');
+  function closeAsk() {
+    backdrop.classList.remove('open');
+    bubble.removeAttribute('hidden');
     sessionStorage.setItem('askWidgetDismissed', '1');
   }
 
-  askBubble.addEventListener('click', openAskWidget);
-  askClose.addEventListener('click', closeAskWidget);
+  bubble.addEventListener('click', openAsk);
+  closeBtn.addEventListener('click', closeAsk);
+  backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeAsk(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeAsk();
+  });
 
   if (!sessionStorage.getItem('askWidgetDismissed')) {
-    setTimeout(openAskWidget, 1800);
-  } else {
-    askBubble.removeAttribute('hidden');
+    setTimeout(openAsk, 1500);
   }
 
-  function showAskStatus(msg, ok) {
-    askStatus.textContent = msg;
-    askStatus.className = 'ask-status show ' + (ok ? 'ok' : 'err');
+  function showStatus(msg, ok) {
+    statusEl.textContent = msg;
+    statusEl.className = 'ask-status show ' + (ok ? 'ok' : 'err');
   }
 
-  askForm.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const name = document.getElementById('awName').value.trim();
@@ -752,12 +754,12 @@ TikTok: @belinda.dinh · Facebook: Belinda Dinh AI & Creative
     const question = document.getElementById('awQuestion').value.trim();
 
     if (!name || !email || question.length < 5) {
-      showAskStatus('Vui lòng điền đủ tên, email và câu hỏi (ít nhất vài chữ).', false);
+      showStatus('Vui lòng điền đủ tên, email và câu hỏi (ít nhất vài chữ).', false);
       return;
     }
 
-    askSubmit.disabled = true;
-    askSubmit.textContent = 'Đang gửi...';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Đang gửi...';
 
     try {
       const res = await fetch(ASK_WORKER_URL + '/ask', {
@@ -767,16 +769,17 @@ TikTok: @belinda.dinh · Facebook: Belinda Dinh AI & Creative
       });
       const data = await res.json();
       if (data.ok) {
-        showAskStatus(data.message || 'Đã gửi câu hỏi thành công!', true);
-        askForm.reset();
+        showStatus(data.message || 'Đã gửi câu hỏi thành công!', true);
+        form.reset();
       } else {
-        showAskStatus(data.error || 'Có lỗi xảy ra, thử lại sau nhé.', false);
+        showStatus(data.error || 'Có lỗi xảy ra, thử lại sau nhé.', false);
       }
     } catch (err) {
-      showAskStatus('Không kết nối được, kiểm tra lại mạng và thử lại.', false);
+      showStatus('Không kết nối được, kiểm tra lại mạng và thử lại.', false);
     } finally {
-      askSubmit.disabled = false;
-      askSubmit.textContent = 'Gửi câu hỏi';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Gửi câu hỏi';
     }
   });
+})();
 </script>

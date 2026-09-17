@@ -489,3 +489,102 @@
     </div>
   </div>
 </footer>
+
+<button type="button" class="ask-widget-bubble" id="askWidgetBubble" aria-label="Mở Trợ lý AI">💬</button>
+<div class="ask-modal-backdrop" id="askModalBackdrop">
+  <div class="ask-modal" id="askModal">
+    <div class="ask-widget-header">
+      <p class="ask-widget-eyebrow">🤖 Trợ lý AI dành riêng cho bạn</p>
+      <button type="button" class="ask-widget-close" id="askWidgetClose" aria-label="Đóng">✕</button>
+    </div>
+    <p class="ask-widget-note">Đặt câu hỏi bạn thắc mắc về AI ngay tại đây, Belinda sẽ giải đáp.</p>
+    <form class="ask-form" id="askWidgetForm">
+      <div class="ask-field">
+        <input type="text" id="awName" name="name" required maxlength="100" placeholder="Tên của bạn">
+      </div>
+      <div class="ask-field">
+        <input type="email" id="awEmail" name="email" required maxlength="200" placeholder="Email nhận câu trả lời">
+      </div>
+      <div class="ask-field">
+        <textarea id="awQuestion" name="question" required maxlength="2000" placeholder="Câu hỏi của bạn..."></textarea>
+      </div>
+      <div class="ask-status" id="awStatus"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="awSubmit">Gửi câu hỏi</button>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  const ASK_WORKER_URL = "https://belinda-hoi-dap.belinda-dinh.workers.dev";
+
+  const backdrop = document.getElementById('askModalBackdrop');
+  const bubble = document.getElementById('askWidgetBubble');
+  const closeBtn = document.getElementById('askWidgetClose');
+  const form = document.getElementById('askWidgetForm');
+  const statusEl = document.getElementById('awStatus');
+  const submitBtn = document.getElementById('awSubmit');
+
+  function openAsk() {
+    backdrop.classList.add('open');
+    bubble.setAttribute('hidden', '');
+  }
+  function closeAsk() {
+    backdrop.classList.remove('open');
+    bubble.removeAttribute('hidden');
+    sessionStorage.setItem('askWidgetDismissed', '1');
+  }
+
+  bubble.addEventListener('click', openAsk);
+  closeBtn.addEventListener('click', closeAsk);
+  backdrop.addEventListener('click', (e) => { if (e.target === backdrop) closeAsk(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeAsk();
+  });
+
+  if (!sessionStorage.getItem('askWidgetDismissed')) {
+    setTimeout(openAsk, 1500);
+  }
+
+  function showStatus(msg, ok) {
+    statusEl.textContent = msg;
+    statusEl.className = 'ask-status show ' + (ok ? 'ok' : 'err');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('awName').value.trim();
+    const email = document.getElementById('awEmail').value.trim();
+    const question = document.getElementById('awQuestion').value.trim();
+
+    if (!name || !email || question.length < 5) {
+      showStatus('Vui lòng điền đủ tên, email và câu hỏi (ít nhất vài chữ).', false);
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Đang gửi...';
+
+    try {
+      const res = await fetch(ASK_WORKER_URL + '/ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, question }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        showStatus(data.message || 'Đã gửi câu hỏi thành công!', true);
+        form.reset();
+      } else {
+        showStatus(data.error || 'Có lỗi xảy ra, thử lại sau nhé.', false);
+      }
+    } catch (err) {
+      showStatus('Không kết nối được, kiểm tra lại mạng và thử lại.', false);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Gửi câu hỏi';
+    }
+  });
+})();
+</script>
