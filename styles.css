@@ -472,6 +472,7 @@
   transition:background .15s ease, border-color .15s ease, transform .15s ease;
 }
 .rm-resource:hover{background:var(--surface);border-color:var(--accent-2);transform:translateX(2px);}
+button.rm-resource{border:none;font:inherit;text-align:left;width:100%;cursor:pointer;}
 .rm-rtop{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.86rem;}
 .rm-rtop > span:first-child{color:var(--ink);}
 .rm-rdesc{font-size:.76rem;color:var(--ink-soft);line-height:1.5;margin:0;}
